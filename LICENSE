@@ -1,6 +1,18 @@
 MIT License
 
-Copyright (c) 2020 esklarski
+Copyright (c) 2020 Various Authors
+Maintainer: Evan Sklarski <esklarski@gmail.com>
+
+******************************************************************************
+    I am NOT the author of anthing here, this is a copy of 91-DIVOC.com 
+    modified for a Canadian setting.
+    
+    DATA is from: github.com/CSSEGISandData/COVID-19 and Wikipedia.
+    
+    As this project is a learning experience many of the remote files will
+    be localized and trimmed into this repository; all copyrights belong
+    to their respective authors.
+******************************************************************************
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
