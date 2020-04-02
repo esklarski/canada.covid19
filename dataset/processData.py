@@ -1,5 +1,5 @@
 
-path = '../../COVID-19/csse_covid_19_data/csse_covid_19_daily_reports/'
+path = '../../data/'
 
 
 stateTranslation = [
@@ -125,4 +125,4 @@ for key in stateReplacement:
 df = df.astype({"Confirmed": "int32", "Recovered": "int32", "Active": "int32", "Deaths": "int32"})
 
 #print(df)
-df.to_csv('jhu-data.csv', index=False)
+df.to_csv('jhu-data-delta.csv', index=False)
