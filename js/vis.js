@@ -583,25 +583,25 @@ var render = function(chart) {
             label: "35% daily",
             sLabel: "35%",
             gRate: 1.35,
-            color: '#ccc'
+            // color: '#ccc'
         },
         {
-            label: "Double every 2 days",
-            sLabel: "Double every 2 days",
+            label: "2 days",
+            sLabel: "2x /2 days",
             gRate: Math.pow(2, 1 / 2)
         },
         {
-            label: "Double every 3 days",
+            label: "3 days",
             sLabel: "2x /3 days",
             gRate: Math.pow(2, 1 / 3)
         },
         {
-            label: "Double every week",
+            label: "1 week",
             sLabel: "2x /week",
             gRate: Math.pow(2, 1 / 7)
         },
         {
-            label: "Double every two weeks",
+            label: "2 weeks",
             sLabel: "2x /2 weeks",
             gRate: Math.pow(2, 1 / 14)
         }
@@ -630,7 +630,7 @@ var render = function(chart) {
             .append("path")
             .attr("fill", "none")
             .attr("stroke", function() {
-                if (scaleLineMeta.color) { return scaleLineMeta.color; } else { return "black"; }
+                if (scaleLineMeta.color) { return scaleLineMeta.color; } else { return "#999"; }
             })
             .attr("stroke-width", 2)
             .attr("stroke-dasharray", 12)
