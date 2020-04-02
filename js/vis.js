@@ -313,7 +313,7 @@ var process_data = function(data, chart) {
 };
 
 var _dateUpdated = "04/01/2020";
-var covidData_promise = d3.csv("https://raw.githubusercontent.com/esklarski/91divocHacking/master/jhu-data.csv?d=20200331", function(row) {
+var covidData_promise = d3.csv("https://raw.githubusercontent.com/esklarski/canada.covid19.github.io/master/dataset/jhu-data.csv?d=20200401", function(row) {
     row["Active"] = +row["Active"];
     row["Confirmed"] = +row["Confirmed"];
     row["Recovered"] = +row["Recovered"];
@@ -321,7 +321,7 @@ var covidData_promise = d3.csv("https://raw.githubusercontent.com/esklarski/91di
     return row;
 });
 
-var populationData_promise = d3.csv("https://raw.githubusercontent.com/esklarski/91divocHacking/master/wikipedia-population.csv", function(row) {
+var populationData_promise = d3.csv("https://raw.githubusercontent.com/esklarski/canada.covid19.github.io/master/dataset/wikipedia-population.csv", function(row) {
     row["Population"] = (+row["Population"]);
     return row;
 });
