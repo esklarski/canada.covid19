@@ -1,4 +1,4 @@
-# canada.covid19.github.io
+# canada.covid19
 Visualizing the growth of COVID-19 in Canada
 
 Based on the work by Wade Fagen-Ulmschneider at:
