@@ -312,8 +312,8 @@ var process_data = function(data, chart) {
     return prep_data(chart);
 };
 
-var _dateUpdated = "04/01/2020";
-var covidData_promise = d3.csv("https://raw.githubusercontent.com/esklarski/canada.covid19/master/dataset/jhu-data.csv?d=20200401", function(row) {
+var _dateUpdated = "04/02/2020";
+var covidData_promise = d3.csv("https://raw.githubusercontent.com/esklarski/canada.covid19/master/dataset/jhu-data.csv?d=20200402", function(row) {
     row["Active"] = +row["Active"];
     row["Confirmed"] = +row["Confirmed"];
     row["Recovered"] = +row["Recovered"];
