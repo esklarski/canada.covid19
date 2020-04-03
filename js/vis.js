@@ -312,8 +312,13 @@ var process_data = function(data, chart) {
     return prep_data(chart);
 };
 
+<<<<<<< HEAD
 var _dateUpdated = "04/02/2020";
 var covidData_promise = d3.csv("https://raw.githubusercontent.com/esklarski/canada.covid19/master/dataset/jhu-data.csv?d=20200402", function(row) {
+=======
+var _dateUpdated = "04/01/2020";
+var covidData_promise = d3.csv("dataset/jhu-data.csv?d=20200401", function(row) {
+>>>>>>> 8ad14c4867fb031cc083ff9b09540335f69388ad
     row["Active"] = +row["Active"];
     row["Confirmed"] = +row["Confirmed"];
     row["Recovered"] = +row["Recovered"];
@@ -321,7 +326,7 @@ var covidData_promise = d3.csv("https://raw.githubusercontent.com/esklarski/cana
     return row;
 });
 
-var populationData_promise = d3.csv("https://raw.githubusercontent.com/esklarski/canada.covid19/master/dataset/wikipedia-population.csv", function(row) {
+var populationData_promise = d3.csv("dataset/wikipedia-population.csv", function(row) {
     row["Population"] = (+row["Population"]);
     return row;
 });
