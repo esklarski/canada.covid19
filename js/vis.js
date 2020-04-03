@@ -579,29 +579,19 @@ var render = function(chart) {
     // Add Data
     // Create 35%-line
     let scaleLinesMeta = [{
-            label: "35% daily",
-            sLabel: "35%",
-            gRate: 1.35,
-            // color: '#ccc'
-        },
-        {
             label: "2 days",
-            sLabel: "2x /2 days",
             gRate: Math.pow(2, 1 / 2)
         },
         {
             label: "3 days",
-            sLabel: "2x /3 days",
             gRate: Math.pow(2, 1 / 3)
         },
         {
             label: "1 week",
-            sLabel: "2x /week",
             gRate: Math.pow(2, 1 / 7)
         },
         {
             label: "2 weeks",
-            sLabel: "2x /2 weeks",
             gRate: Math.pow(2, 1 / 14)
         }
     ]
@@ -655,10 +645,7 @@ var render = function(chart) {
             .attr("fill", function() {
                 if (scaleLineMeta.color) { return scaleLineMeta.color; } else { return "black"; }
             })
-            .text(function() {
-                //if (growthLineLabel_x >= width - 50) { return ""; }
-                return (!isSmall) ? scaleLineMeta.label : scaleLineMeta.sLabel;
-            })
+            .text(scaleLineMeta.label);
     }
 
 
