@@ -312,8 +312,7 @@ var process_data = function(data, chart) {
     return prep_data(chart);
 };
 
-var _dateUpdated = "04/02/2020";
-var covidData_promise = d3.csv("dataset/jhu-data.csv?d=20200401", function(row) {
+var covidData_promise = d3.csv(JHUsource, function(row) {
     row["Active"] = +row["Active"];
     row["Confirmed"] = +row["Confirmed"];
     row["Recovered"] = +row["Recovered"];
@@ -321,7 +320,7 @@ var covidData_promise = d3.csv("dataset/jhu-data.csv?d=20200401", function(row) 
     return row;
 });
 
-var populationData_promise = d3.csv("dataset/wikipedia-population.csv", function(row) {
+var populationData_promise = d3.csv(POPsource, function(row) {
     row["Population"] = (+row["Population"]);
     return row;
 });
