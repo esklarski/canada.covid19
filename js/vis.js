@@ -134,6 +134,7 @@ var charts = {
         xCap: 25,
         id: "chart-countries-normalized",
         normalizePopulation: "country",
+        popQuantum: 1e6,
         show: 50,
         sort: function(d) { return -d.maxCases + -(d.pop / 1e2); },
         dataSelection: 'cases',
@@ -150,6 +151,7 @@ var charts = {
         xCap: 40,
         id: "chart-states-normalized",
         normalizePopulation: "state",
+        popQuantum: 1e5,
         show: 9999,
         sort: function(d) { return -d.maxCases; },
         dataSelection: 'cases',
@@ -240,7 +242,7 @@ var process_data = function(data, chart) {
             // Start counting days only after the first day w/ 100 cases:
             //console.log(agg[country][date]);
             var cases = agg[country][date][chart.dataSelection];
-            if (chart.normalizePopulation) { cases = (cases / popSize) * 1e6; }
+            if (chart.normalizePopulation) { cases = (cases / popSize) * chart.popQuantum; }
 
             if (chart.showDelta) {
                 if (i == 0) { cases = 0; } else {
@@ -456,7 +458,7 @@ var tip_html = function(chart) {
         }
 
         var s2 = "";
-        if (chart.normalizePopulation) { s2 = " per 1,000,000 people"; }
+        if (chart.normalizePopulation) { s2 = " per " + chart.popQuantum.toLocaleString() + " people"; }
 
         var dataLabel = "";
         if (chart.showDelta) { dataLabel = "new "; }
@@ -579,22 +581,22 @@ var render = function(chart) {
     // Add Data
     // Create 35%-line
     let scaleLinesMeta = [{
-            label: "2 days",
-            gRate: Math.pow(2, 1 / 2)
-        },
-        {
-            label: "3 days",
-            gRate: Math.pow(2, 1 / 3)
-        },
-        {
-            label: "1 week",
-            gRate: Math.pow(2, 1 / 7)
-        },
-        {
-            label: "2 weeks",
-            gRate: Math.pow(2, 1 / 14)
-        }
-    ]
+        label: "2 days",
+        gRate: Math.pow(2, 1 / 2)
+    },
+    {
+        label: "3 days",
+        gRate: Math.pow(2, 1 / 3)
+    },
+    {
+        label: "1 week",
+        gRate: Math.pow(2, 1 / 7)
+    },
+    {
+        label: "2 weeks",
+        gRate: Math.pow(2, 1 / 14)
+    }
+]
 
     for (var scaleLineMeta of scaleLinesMeta) {
         var cases = data_y0,
@@ -653,7 +655,7 @@ var render = function(chart) {
     var xAxisLabel = `Days since ${chart.y0} `
     if (chart.dataSelection == 'cases') { xAxisLabel += "case"; if (chart.y0 != 1) { xAxisLabel += "s"; } } else if (chart.dataSelection == 'active') { xAxisLabel += "active case"; if (chart.y0 != 1) { xAxisLabel += "s"; } } else if (chart.dataSelection == 'deaths') { xAxisLabel += "death"; if (chart.y0 != 1) { xAxisLabel += "s"; } } else if (chart.dataSelection == 'recovered') { xAxisLabel += "recover"; if (chart.y0 != 1) { xAxisLabel += "ies"; } else { xAxisLabel += "y"; } }
     if (chart.normalizePopulation) {
-        xAxisLabel += " /1m people";
+        xAxisLabel += " /" + chart.popQuantum.toLocaleString();
     }
 
     svg.append("text")
@@ -667,7 +669,7 @@ var render = function(chart) {
     if (chart.showDelta) { yAxisLabel += "New Daily "; }
     if (chart.dataSelection == 'cases') { yAxisLabel += "Confirmed Cases"; } else if (chart.dataSelection == 'active') { yAxisLabel += "Active Cases"; } else if (chart.dataSelection == 'deaths') { yAxisLabel += "COVID-19 Deaths"; } else if (chart.dataSelection == 'recovered') { yAxisLabel += "Recoveries" }
     if (chart.normalizePopulation) {
-        yAxisLabel += " /1m people";
+        yAxisLabel += " /" + chart.popQuantum.toLocaleString();
     }
 
     svg.append("text")
