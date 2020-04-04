@@ -579,7 +579,7 @@ var render = function(chart) {
 
 
     // Add Data
-    // Create 35%-line
+    // Create doubling lines
     let scaleLinesMeta = [{
         label: "2 days",
         gRate: Math.pow(2, 1 / 2)
@@ -595,8 +595,7 @@ var render = function(chart) {
     {
         label: "2 weeks",
         gRate: Math.pow(2, 1 / 14)
-    }
-]
+    }]
 
     for (var scaleLineMeta of scaleLinesMeta) {
         var cases = data_y0,
