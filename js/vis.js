@@ -113,14 +113,14 @@ var charts = {
         reducer: reducer_byUSstate,
         scale: "log",
         highlight: defaultState,
-        y0: 20,
+        y0: 5,
         xCap: 40,
         id: "chart-states",
         normalizePopulation: false,
         show: 9999,
         sort: function(d) { return -d.maxCases; },
         dataSelection: 'cases',
-        dataSelection_y0: { 'active': 20, 'cases': 20, 'deaths': 5, 'recovered': 20 },
+        dataSelection_y0: { 'active': 5, 'cases': 5, 'deaths': 1, 'recovered': 1 },
         xMax: null,
         yMax: null,
         data: null
@@ -653,7 +653,7 @@ var render = function(chart) {
     var xAxisLabel = `Days since ${chart.y0} `
     if (chart.dataSelection == 'cases') { xAxisLabel += "case"; if (chart.y0 != 1) { xAxisLabel += "s"; } } else if (chart.dataSelection == 'active') { xAxisLabel += "active case"; if (chart.y0 != 1) { xAxisLabel += "s"; } } else if (chart.dataSelection == 'deaths') { xAxisLabel += "death"; if (chart.y0 != 1) { xAxisLabel += "s"; } } else if (chart.dataSelection == 'recovered') { xAxisLabel += "recover"; if (chart.y0 != 1) { xAxisLabel += "ies"; } else { xAxisLabel += "y"; } }
     if (chart.normalizePopulation) {
-        xAxisLabel += "/1m people";
+        xAxisLabel += " /1m people";
     }
 
     svg.append("text")
@@ -667,7 +667,7 @@ var render = function(chart) {
     if (chart.showDelta) { yAxisLabel += "New Daily "; }
     if (chart.dataSelection == 'cases') { yAxisLabel += "Confirmed Cases"; } else if (chart.dataSelection == 'active') { yAxisLabel += "Active Cases"; } else if (chart.dataSelection == 'deaths') { yAxisLabel += "COVID-19 Deaths"; } else if (chart.dataSelection == 'recovered') { yAxisLabel += "Recoveries" }
     if (chart.normalizePopulation) {
-        yAxisLabel += "/1m people";
+        yAxisLabel += " /1m people";
     }
 
     svg.append("text")
