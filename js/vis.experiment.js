@@ -169,7 +169,7 @@ var charts = {
         xCap: 40,
         id: "chart-experimental",
         normalizePopulation: "state",
-        popQuantum: 1e6,
+        popQuantum: 5e5,
         show: 9999,
         sort: function(d) { return -d.maxCases; },
         dataSelection: 'deaths',
