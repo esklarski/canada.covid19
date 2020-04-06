@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="img/589782.png">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/91.css">
+
+    <title>Canadian Covid-19 Visualization</title>
+</head>
+
+<body onload="updateSpan();">
+    <header class="container-fluid header-small">
+        <div class="container">
+            <h1>Canadian Covid-19 Visualization</h1>
+        </div>
+    </header>
+
+    <link rel="stylesheet" href="css/css.css">
+
+    <div class="container-fluid viz" style="border-bottom: solid 1px hsla(199, 100%, 6%, 1);">
+        <div class="container lead">
+            <h2>Visualizing the growth of COVID-19 in Canada</h2>
+            <p>Based on the work by Wade Fagen-Ulmschneider at <a href="https://91-divoc.com/" target="_blank">91-DIVOC.com</a></p>
+        </div>
+    </div>
+
+<!-- Experimental Charts -->
+    <div class="container viz">
+        <div class="alert alert-secondary" style="margin-top: 10px; padding-top: 20px;">
+            <h4>Experimental</h4><p><b>Last Update: <span id="update-date"></span> @ <span id="update-time"></span></b></p>
+            <p>visualizations below are experiments, they may or may not be useful.</p>
+            
+        </div>
+
+        <div id="sizer"></div>
+
+        <!-- COVID-19 Cases by Country -->
+        <div class="chart-header" style="margin-top: 20px;">
+            <h2>COVID-19 Cases by Country</h2>
+        </div>
+        <div id="chart-countries" class="chart-viz">
+            <div class="text-center" style="height: 500px;"><b>Loading Data...</b></div>
+        </div>
+        <div class="chart-footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Highlight:</span>
+                        </div>
+                        <select class="form-control" id="highlight-chart-countries"></select>
+                    </div>
+
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Show:</span>
+                        </div>
+                        <select class="form-control filter-select" id="filter-chart-countries" data-chart="countries">
+                            <option value="10">10</option>
+                            <option value="25" selected>25</option>
+                            <option value="50">50</option>
+                            <option value="9999">All</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 text-right">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Data:</span>
+                        </div>
+                        <select class="form-control data-select" data-chart="countries">
+                            <option value="active">Active Cases</option>
+                            <option value="cases">Confirmed Cases</option>
+                            <option value="cases-daily">New Cases /Day</option>
+                            <option value="deaths" selected>Deaths</option>
+                            <option value="recovered">Recovered </option>
+                        </select>
+                    </div>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Scale:</span>
+                        </div>
+                        <label class="btn btn-info active scaleSelection" data-scale="log" data-chart="countries">
+                            <input type="radio" name="scale" autocomplete="off" checked> Log Scale
+                        </label>
+                        <label class="btn btn-info scaleSelection" data-scale="linear" data-chart="countries">
+                            <input type="radio" name="scale" autocomplete="off"> Linear Scale
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Normalized province and territory data -->
+        <div class="chart-header" style="margin-top: 20px;">
+            <h2>Canadian Province/Territory Normalized by Population</h2>
+        </div>
+        <div id="chart-experimental" class="chart-viz">
+            <div class="text-center" style="height: 500px;"><b>Loading Data...</b></div>
+        </div>
+        <div class="chart-footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Highlight:</span>
+                        </div>
+                        <select class="form-control" id="highlight-chart-experimental"></select>
+                    </div>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+                        <select class="form-control filter-select" id="filter-chart-experimental" data-chart="experimental" hidden>
+                            <option value="10">10</option>
+                            <option value="25" selected>25</option>
+                            <option value="50">50</option>
+                            <option value="9999">All</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 text-right">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Data:</span>
+                        </div>
+                        <select class="form-control data-select" data-chart="experimental">
+                            <option value="active">Active Cases</option>
+                            <option value="cases">Confirmed Cases</option>
+                            <option value="cases-daily">New Cases /Day</option>
+                            <option value="deaths" selected>Deaths</option>
+                            <option value="recovered">Recovered </option>
+                        </select>
+                    </div>
+
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Scale:</span>
+                        </div>
+                        <label class="btn btn-info active scaleSelection" data-scale="log" data-chart="experimental">
+                            <input type="radio" name="scale" autocomplete="off" checked> Log Scale
+                        </label>
+                        <label class="btn btn-info scaleSelection" data-scale="linear" data-chart="experimental">
+                            <input type="radio" name="scale" autocomplete="off"> Linear Scale
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid viz" style="border-bottom: solid 1px hsla(199, 100%, 6%, 1); margin-top: 15px;"></div>
+
+    <footer class="container-fluid">
+        <div class="container lead">
+            <div><u><b>Inspiration and initial code for this project</b></u>: <a href="https://91-divoc.com/" target="_blank">91-DIVOC.com - <br>Let's flip the script on COVID-19 and build fantastic things!</a></div>
+            <hr>
+            <div><u><b>COVID-19 Dataset</b></u>: <a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports" target="_blank">Data Repository by Johns Hopkins CSSE</a></div>
+            <div>
+                <u><b>Population Datasets</b></u>:
+                <ul>
+                    <li><a href="https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population" target="_blank">Wikipedia, list of countries</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Population_of_Canada_by_province_and_territory" target="_blank">Wikipedia, Population of Canada by province and territory</a></li>
+                </ul>
+            </div>
+            <hr>
+            <div><u><b>Favicon</b></u>: <a href="https://www.flaticon.com/free-icon/maple-leaf_589782" target="_blank">maple-leaf_589782</a></div>
+            <hr>
+            <div><u><b>Source code for this site</b></u>: <a href="https://github.com/esklarski/canada.covid19" target="_blank"> on Github</a></div>
+        </div>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js" integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ=" crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+
+<!-- 
+    <script src="js/pretty/jquery-3.2.1.slim.pretty.js"></script>
+    <script src="js/pretty/popper.pretty.js"></script>
+    <script src="js/pretty/bootstrap.pretty.js"></script>
+    <script src="js/pretty/lodash.pretty.js"></script>
+    <script src="js/pretty/d3.v5.pretty.js"></script>
+ -->
+
+    <script src="js/d3-tip.js"></script>
+    <script src="js/updated.js"></script>
+    <script src="js/pointers.js"></script>
+    <script src="js/vis.new.js"></script>
+
+</body>
+
+</html>
