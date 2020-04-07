@@ -169,7 +169,7 @@ var charts = {
         xCap: 40,
         id: "chart-experimental",
         normalizePopulation: "state",
-        popQuantum: 5e5,
+        popQuantum: { 'active': 1e6, 'cases': 1e5, 'deaths': 5e5, 'recovered': 1e6 },
         show: 9999,
         sort: function(d) { return -d.maxCases; },
         dataSelection: 'deaths',
@@ -260,7 +260,10 @@ var process_data = function(data, chart) {
             // Start counting days only after the first day w/ 100 cases:
             //console.log(agg[country][date]);
             var cases = agg[country][date][chart.dataSelection];
-            if (chart.normalizePopulation) { cases = (cases / popSize) * chart.popQuantum; }
+            if (chart.normalizePopulation) {
+                var quantum = chart.popQuantum[chart.dataSelection] || chart.popQuantum;
+                cases = (cases / popSize) * quantum;
+            }
 
             if (chart.showDelta) {
                 if (i == 0) { cases = 0; } else {
@@ -481,7 +484,10 @@ var tip_html = function(chart) {
         }
 
         var s2 = "";
-        if (chart.normalizePopulation) { s2 = " per " + chart.popQuantum.toLocaleString() + " people"; }
+        if (chart.normalizePopulation) {
+            var quantum = chart.popQuantum[chart.dataSelection] || chart.popQuantum;
+            s2 = " per " + quantum.toLocaleString() + " people";
+        }
 
         var dataLabel = "";
         if (chart.showDelta) { dataLabel = "new "; }
@@ -673,13 +679,14 @@ var render = function(chart) {
             .text(scaleLineMeta.label);
     }
 
-
+    var quantum = (chart.normalizePopulation)
+        ? " /" + (chart.popQuantum[chart.dataSelection] || chart.popQuantum).toLocaleString()
+        : "";
 
     var xAxisLabel = `Days since ${chart.y0} `
     if (chart.dataSelection == 'cases') { xAxisLabel += "case"; if (chart.y0 != 1) { xAxisLabel += "s"; } } else if (chart.dataSelection == 'active') { xAxisLabel += "active case"; if (chart.y0 != 1) { xAxisLabel += "s"; } } else if (chart.dataSelection == 'deaths') { xAxisLabel += "death"; if (chart.y0 != 1) { xAxisLabel += "s"; } } else if (chart.dataSelection == 'recovered') { xAxisLabel += "recover"; if (chart.y0 != 1) { xAxisLabel += "ies"; } else { xAxisLabel += "y"; } }
-    if (chart.normalizePopulation) {
-        xAxisLabel += " /" + chart.popQuantum.toLocaleString();
-    }
+    
+    xAxisLabel += quantum;
 
     svg.append("text")
         .attr("x", width - 5)
@@ -691,9 +698,8 @@ var render = function(chart) {
     var yAxisLabel = "";
     if (chart.showDelta) { yAxisLabel += "New Daily "; }
     if (chart.dataSelection == 'cases') { yAxisLabel += "Confirmed Cases"; } else if (chart.dataSelection == 'active') { yAxisLabel += "Active Cases"; } else if (chart.dataSelection == 'deaths') { yAxisLabel += "COVID-19 Deaths"; } else if (chart.dataSelection == 'recovered') { yAxisLabel += "Recoveries" }
-    if (chart.normalizePopulation) {
-        yAxisLabel += " /" + chart.popQuantum.toLocaleString();
-    }
+
+    yAxisLabel += quantum;
 
     svg.append("text")
         .attr("transform", "rotate(-90)")
