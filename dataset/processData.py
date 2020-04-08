@@ -47,6 +47,7 @@ def processDate(date):
     })
 
   df = df[ df['Province_State'].str.contains('Diamond Princess') != True ]
+  df = df[ df['Province_State'].str.contains('Grand Princess') != True ]
 
   df = df.apply( translateState, axis=1 )
 
@@ -72,7 +73,9 @@ import pandas as pd
 import os
 
 df = pd.DataFrame()
-for filename in os.listdir(path):
+files = os.listdir(path)
+files.sort()
+for filename in files:
   if not filename.endswith(".csv"): continue
   date = filename[0:10]
 
