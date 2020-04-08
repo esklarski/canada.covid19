@@ -3881,7 +3881,7 @@ Togo,,16,1,15,0,03-21-2020
 Trinidad and Tobago,,49,1,48,0,03-21-2020
 Tunisia,,60,0,59,1,03-21-2020
 Turkey,,670,0,661,9,03-21-2020
-United States,,25444,171,24966,307,03-21-2020
+United States,,25465,171,24987,307,03-21-2020
 Uganda,,1,0,1,0,03-21-2020
 Ukraine,,47,1,43,3,03-21-2020
 United Arab Emirates,,153,38,113,2,03-21-2020
@@ -4059,7 +4059,7 @@ Togo,,16,0,16,0,03-22-2020
 Trinidad and Tobago,,50,0,50,0,03-22-2020
 Tunisia,,75,1,71,3,03-22-2020
 Turkey,,1236,0,1206,30,03-22-2020
-United States,,33697,0,0,427,03-22-2020
+United States,,33799,0,0,427,03-22-2020
 Uganda,,1,0,1,0,03-22-2020
 Ukraine,,73,1,69,3,03-22-2020
 United Arab Emirates,,153,38,113,2,03-22-2020
@@ -4438,6 +4438,7 @@ Canada,Nova Scotia,68,0,0,0,03-25-2020
 Canada,Ontario,688,0,0,8,03-25-2020
 Canada,Prince Edward Island,5,0,0,0,03-25-2020
 Canada,Quebec,1342,0,0,6,03-25-2020
+Canada,Recovered,0,183,0,0,03-25-2020
 Canada,Saskatchewan,72,0,0,0,03-25-2020
 Afghanistan,,84,2,80,2,03-25-2020
 Albania,,146,17,124,5,03-25-2020
@@ -4623,6 +4624,7 @@ Canada,Nova Scotia,73,0,0,0,03-26-2020
 Canada,Ontario,858,0,0,13,03-26-2020
 Canada,Prince Edward Island,5,0,0,0,03-26-2020
 Canada,Quebec,1632,0,0,8,03-26-2020
+Canada,Recovered,0,184,0,0,03-26-2020
 Canada,Saskatchewan,95,0,0,0,03-26-2020
 Canada,Yukon,3,0,0,0,03-26-2020
 Afghanistan,,94,2,88,4,03-26-2020
@@ -4811,6 +4813,7 @@ Canada,Nova Scotia,90,0,0,0,03-27-2020
 Canada,Ontario,994,0,0,18,03-27-2020
 Canada,Prince Edward Island,9,0,0,0,03-27-2020
 Canada,Quebec,2024,0,0,18,03-27-2020
+Canada,Recovered,0,256,0,0,03-27-2020
 Canada,Saskatchewan,95,0,0,0,03-27-2020
 Canada,Yukon,3,0,0,0,03-27-2020
 Afghanistan,,110,2,104,4,03-27-2020
@@ -5000,6 +5003,7 @@ Canada,Nova Scotia,110,0,0,0,03-28-2020
 Canada,Ontario,1144,0,0,18,03-28-2020
 Canada,Prince Edward Island,11,0,0,0,03-28-2020
 Canada,Quebec,2498,0,0,22,03-28-2020
+Canada,Recovered,0,466,0,0,03-28-2020
 Canada,Saskatchewan,134,0,0,0,03-28-2020
 Canada,Yukon,4,0,0,0,03-28-2020
 Afghanistan,,110,2,104,4,03-28-2020
@@ -5190,6 +5194,7 @@ Canada,Nova Scotia,122,0,0,0,03-29-2020
 Canada,Ontario,1355,0,0,21,03-29-2020
 Canada,Prince Edward Island,11,0,0,0,03-29-2020
 Canada,Quebec,2840,0,0,22,03-29-2020
+Canada,Recovered,0,466,0,0,03-29-2020
 Canada,Saskatchewan,156,0,0,0,03-29-2020
 Canada,Yukon,4,0,0,0,03-29-2020
 Afghanistan,,120,2,114,4,03-29-2020
@@ -5357,7 +5362,7 @@ Togo,,25,1,23,1,03-29-2020
 Trinidad and Tobago,,78,1,74,3,03-29-2020
 Tunisia,,312,2,302,8,03-29-2020
 Turkey,,9217,105,8981,131,03-29-2020
-United States,,140837,2665,0,2467,03-29-2020
+United States,,140860,2665,0,2467,03-29-2020
 Uganda,,33,0,33,0,03-29-2020
 Ukraine,,475,6,459,10,03-29-2020
 United Arab Emirates,,570,58,509,3,03-29-2020
@@ -5380,6 +5385,7 @@ Canada,Nova Scotia,127,0,0,0,03-30-2020
 Canada,Ontario,1706,0,0,31,03-30-2020
 Canada,Prince Edward Island,18,0,0,0,03-30-2020
 Canada,Quebec,3430,0,0,22,03-30-2020
+Canada,Recovered,0,466,0,0,03-30-2020
 Canada,Saskatchewan,156,0,0,2,03-30-2020
 Canada,Yukon,4,0,0,0,03-30-2020
 Afghanistan,,170,2,164,4,03-30-2020
@@ -5548,7 +5554,7 @@ Togo,,30,1,28,1,03-30-2020
 Trinidad and Tobago,,82,1,78,3,03-30-2020
 Tunisia,,312,3,301,8,03-30-2020
 Turkey,,10827,162,10497,168,03-30-2020
-United States,,161758,5644,0,2978,03-30-2020
+United States,,161788,5644,0,2978,03-30-2020
 Uganda,,33,0,33,0,03-30-2020
 Ukraine,,548,8,527,13,03-30-2020
 United Arab Emirates,,611,61,545,5,03-30-2020
@@ -5571,6 +5577,7 @@ Canada,Nova Scotia,147,0,0,0,03-31-2020
 Canada,Ontario,1966,0,0,33,03-31-2020
 Canada,Prince Edward Island,21,0,0,0,03-31-2020
 Canada,Quebec,4162,0,0,31,03-31-2020
+Canada,Recovered,0,1592,0,0,03-31-2020
 Canada,Saskatchewan,184,0,0,2,03-31-2020
 Canada,Yukon,5,0,0,0,03-31-2020
 Afghanistan,,174,5,165,4,03-31-2020
@@ -5764,6 +5771,7 @@ Canada,Nova Scotia,173,0,0,0,04-01-2020
 Canada,Ontario,2392,0,0,37,04-01-2020
 Canada,Prince Edward Island,21,0,0,0,04-01-2020
 Canada,Quebec,4611,0,0,33,04-01-2020
+Canada,Recovered,0,1324,0,0,04-01-2020
 Canada,Saskatchewan,193,0,0,3,04-01-2020
 Canada,Yukon,5,0,0,0,04-01-2020
 Afghanistan,,237,5,228,4,04-01-2020
@@ -5957,6 +5965,7 @@ Canada,Nova Scotia,193,0,0,0,04-02-2020
 Canada,Ontario,2793,0,0,53,04-02-2020
 Canada,Prince Edward Island,22,0,0,0,04-02-2020
 Canada,Quebec,5518,0,0,36,04-02-2020
+Canada,Recovered,0,1735,0,0,04-02-2020
 Canada,Saskatchewan,206,0,0,3,04-02-2020
 Canada,Yukon,6,0,0,0,04-02-2020
 Afghanistan,,273,10,257,6,04-02-2020
@@ -6151,6 +6160,7 @@ Canada,Nova Scotia,207,0,0,0,04-03-2020
 Canada,Ontario,3255,0,0,67,04-03-2020
 Canada,Prince Edward Island,22,0,0,0,04-03-2020
 Canada,Quebec,6101,0,0,61,04-03-2020
+Canada,Recovered,0,2175,0,0,04-03-2020
 Canada,Saskatchewan,220,0,0,3,04-03-2020
 Canada,Yukon,6,0,0,0,04-03-2020
 Afghanistan,,281,10,265,6,04-03-2020
@@ -6345,6 +6355,7 @@ Canada,Nova Scotia,236,0,0,0,04-04-2020
 Canada,Ontario,3630,0,0,94,04-04-2020
 Canada,Prince Edward Island,22,0,0,0,04-04-2020
 Canada,Quebec,6101,0,0,61,04-04-2020
+Canada,Recovered,0,2577,0,0,04-04-2020
 Canada,Saskatchewan,220,0,0,3,04-04-2020
 Canada,Yukon,6,0,0,0,04-04-2020
 Afghanistan,,299,10,282,7,04-04-2020
@@ -6539,6 +6550,7 @@ Canada,Nova Scotia,262,0,0,0,04-05-2020
 Canada,Ontario,4354,0,0,119,04-05-2020
 Canada,Prince Edward Island,22,0,0,0,04-05-2020
 Canada,Quebec,7944,0,0,75,04-05-2020
+Canada,Recovered,0,3012,0,0,04-05-2020
 Canada,Saskatchewan,249,0,0,3,04-05-2020
 Canada,Yukon,6,0,0,0,04-05-2020
 Afghanistan,,349,15,327,7,04-05-2020
@@ -6735,6 +6747,7 @@ Canada,Nova Scotia,293,0,0,0,04-06-2020
 Canada,Ontario,4347,0,0,150,04-06-2020
 Canada,Prince Edward Island,22,0,0,0,04-06-2020
 Canada,Quebec,8580,0,0,121,04-06-2020
+Canada,Recovered,0,3256,0,0,04-06-2020
 Canada,Saskatchewan,249,0,0,3,04-06-2020
 Canada,Yukon,6,0,0,0,04-06-2020
 Afghanistan,,367,18,338,11,04-06-2020
@@ -6908,7 +6921,7 @@ Togo,,58,23,32,3,04-06-2020
 Trinidad and Tobago,,105,1,96,8,04-06-2020
 Tunisia,,596,5,569,22,04-06-2020
 Turkey,,30217,1326,28242,649,04-06-2020
-United States,,366565,19581,0,10783,04-06-2020
+United States,,366618,19581,0,10783,04-06-2020
 Uganda,,52,0,52,0,04-06-2020
 Ukraine,,1319,28,1253,38,04-06-2020
 United Arab Emirates,,2076,167,1898,11,04-06-2020
@@ -6932,6 +6945,7 @@ Canada,Nova Scotia,310,0,0,1,04-07-2020
 Canada,Ontario,4726,0,0,153,04-07-2020
 Canada,Prince Edward Island,22,0,0,0,04-07-2020
 Canada,Quebec,9340,0,0,150,04-07-2020
+Canada,Recovered,0,3791,0,0,04-07-2020
 Canada,Saskatchewan,260,0,0,3,04-07-2020
 Canada,Yukon,7,0,0,0,04-07-2020
 Afghanistan,,423,18,391,14,04-07-2020
