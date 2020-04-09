@@ -51,8 +51,6 @@ def processDate(date):
 
   df = df.apply( translateState, axis=1 )
 
-
-  # print(df['Province_State'].str.contains('Diamond Princess'))
   stateData = df.groupby(['Country_Region', 'Province_State']).agg('sum').reset_index()
   stateData = stateData[ stateData["Country_Region"] == "Canada" ]
 
@@ -82,7 +80,7 @@ for filename in files:
   df = df.append(processDate(date))
 
 
-# == Replace Data to Match Population ==
+# == replace country name to match population ==
 countryReplacement = {
   "US": "United States",
   "Korea, South": "South Korea",
@@ -109,20 +107,28 @@ countryReplacement = {
   "Republic of Moldova": "Moldova",
 }
 
-stateReplacement = {
-  "United States Virgin Islands": "Virgin Islands"
-}
-
 for key in countryReplacement:
   old = key
   new = countryReplacement[key]
   df["Country_Region"] = df["Country_Region"].replace(old, new)
+
+# == Fix state names ==
+stateReplacement = {
+  "United States Virgin Islands": "Virgin Islands"
+}
 
 for key in stateReplacement:
   old = key
   new = stateReplacement[key]
   df["Province_State"] = df["Province_State"].replace(old, new)
 
+# == Remove 'Recovered' province entry ==
+entryRemoval = {
+  "Recovered": "Recovered",
+}
+
+for key in entryRemoval:
+  df = df[ df['Province_State'].str.contains(entryRemoval[key]) != True ]
 
 # == Add Population ==
 df = df.astype({"Confirmed": "int32", "Recovered": "int32", "Active": "int32", "Deaths": "int32"})
