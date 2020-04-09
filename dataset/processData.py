@@ -69,7 +69,7 @@ def processDate(date):
   countrydata['Province_State'] = ""
 
   # append country data to state data
-  df = stateData.append( countrydata )
+  df = stateData.append(countrydata, sort=True)
 
   # calculate 'active' cases if not provided
   if 'Active' not in df:
