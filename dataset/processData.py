@@ -46,7 +46,7 @@ def processDate(date):
   # read file
   df = pd.read_csv(path + date + ".csv")
 
-  # rename column headings ** why? **
+  # rename column headings for consistency
   if 'Country/Region' in df:
     df = df.rename(columns={
       'Country/Region': 'Country_Region',
@@ -60,15 +60,15 @@ def processDate(date):
   # translate province_state names
   df = df.apply( translateState, axis=1 )
 
-  # ? group and sum provincial data ?
+  # group and sum provincial data
   stateData = df.groupby(['Country_Region', 'Province_State']).agg('sum').reset_index()
   stateData = stateData[ stateData["Country_Region"] == "Canada" ]
 
-  # ? group and sum country data ?
+  # group and sum country data
   countrydata = df.groupby(['Country_Region']).agg('sum').reset_index()
   countrydata['Province_State'] = ""
 
-  # ? append country data ?
+  # append country data to state data
   df = stateData.append( countrydata )
 
   # calculate 'active' cases if not provided
