@@ -60,11 +60,11 @@ def processDate(date):
   # translate province_state names
   df = df.apply( translateState, axis=1 )
 
-  # group and sum provincial data
+  # group and sum provincial data, select canadian rows
   stateData = df.groupby(['Country_Region', 'Province_State']).agg('sum').reset_index()
   stateData = stateData[ stateData["Country_Region"] == "Canada" ]
 
-  # group and sum country data
+  # group and sum country data, set province_state as empty
   countrydata = df.groupby(['Country_Region']).agg('sum').reset_index()
   countrydata['Province_State'] = ""
 
@@ -75,8 +75,10 @@ def processDate(date):
   if 'Active' not in df:
     df['Active'] = df['Confirmed'] - df['Recovered'] - df['Deaths']
 
-  # ? add column names ?
-  df = df[ ["Country_Region", "Province_State", "Confirmed", "Recovered", "Active", "Deaths"] ] 
+  # select columns used for website
+  df = df[ ["Country_Region", "Province_State", "Confirmed", "Recovered", "Active", "Deaths"] ]
+
+  # set date of current data
   df["Date"] = date
 
   return df
