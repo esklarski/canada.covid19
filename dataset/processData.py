@@ -60,13 +60,24 @@ def processDate(date):
   # translate province_state names
   df = df.apply( translateState, axis=1 )
 
-  # group and sum provincial data, select canadian rows
+  # group and sum provincial data
   stateData = df.groupby(['Country_Region', 'Province_State']).agg('sum').reset_index()
-  stateData = stateData[ stateData["Country_Region"] == "Canada" ]
 
   # group and sum country data, set province_state as empty
   countrydata = df.groupby(['Country_Region']).agg('sum').reset_index()
   countrydata['Province_State'] = ""
+
+  # copy Canada entry, add "Canada" as province_state
+  canada = countrydata.copy()
+  canada = countrydata.groupby(['Country_Region']).agg('sum').reset_index()
+  canada = canada[ canada["Country_Region"] == "Canada" ]
+  canada['Province_State'] = "Canada"
+
+  # append Canada to province_state list
+  stateData = stateData.append(canada, sort=True)
+
+  # select canadian rows
+  stateData = stateData[ stateData["Country_Region"] == "Canada" ]
 
   # append country data to state data
   df = stateData.append(countrydata, sort=True)
@@ -81,7 +92,7 @@ def processDate(date):
       else:
         continue
 
-  # select columns used for website
+  # select only columns used for website
   df = df[ ["Country_Region", "Province_State", "Confirmed", "Recovered", "Active", "Deaths"] ]
 
   # set date of current data
