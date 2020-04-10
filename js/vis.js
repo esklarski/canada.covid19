@@ -712,7 +712,7 @@ var render = function(chart) {
                 if (d[0].country == chart.highlight) { return 4; } else { return 1; }
             })
             .style("opacity", function(d) {
-                if (d[0].country == chart.highlight) { return 1; } else { return 0.3; }
+                if (d[0].country == chart.highlight || d[0].country == "Canada") { return 1; } else { return 0.3; }
             })
             .attr("d", d3.line()
                 .x(function(d) { return daysScale(d.dayCounter); })
@@ -746,7 +746,7 @@ var render = function(chart) {
             .attr("fill", colorScale(i))
             .attr("class", "label-country")
             .style("opacity", function() {
-                if (countryData.data[0].country == chart.highlight) { return 1; } else { return 0.3; }
+                if (countryData.data[0].country == chart.highlight || countryData.data[0].country == "Canada") { return 1; } else { return 0.3; }
             })
             .style("font-size", function() {
                 if (countryData.data[0].country == chart.highlight) { return "15px"; } else { return null; }
