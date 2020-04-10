@@ -151,7 +151,7 @@ var charts = {
         xCap: 40,
         id: "chart-states-normalized",
         normalizePopulation: "state",
-        popQuantum: { 'active': 1e6, 'cases': 1e5, 'deaths': 5e5, 'recovered': 1e6 },
+        popQuantum: { 'active': 1e5, 'cases': 1e5, 'deaths': 5e5, 'recovered': 1e6 },
         show: 9999,
         sort: function(d) { return -d.maxCases; },
         dataSelection: 'cases',
