@@ -74,6 +74,12 @@ def processDate(date):
   # calculate 'active' cases if not provided
   if 'Active' not in df:
     df['Active'] = df['Confirmed'] - df['Recovered'] - df['Deaths']
+  else:
+    for value in df['Active']:
+      if value <= "0" or value == "":
+        df['Active'] = df['Confirmed'] - df['Recovered'] - df['Deaths']
+      else:
+        continue
 
   # select columns used for website
   df = df[ ["Country_Region", "Province_State", "Confirmed", "Recovered", "Active", "Deaths"] ]
@@ -159,7 +165,7 @@ for key in entryRemoval:
   df = df[ df['Province_State'].str.contains(entryRemoval[key]) != True ]
 
 
-## == Add Population == ##
+## == define entry types == ##
 df = df.astype({"Confirmed": "int32", "Recovered": "int32", "Active": "int32", "Deaths": "int32"})
 
 
