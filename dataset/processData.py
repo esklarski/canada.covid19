@@ -140,14 +140,14 @@ for key in countryReplacement:
 
 
 ## == Fix state names == ##
-stateReplacement = {
-  "United States Virgin Islands": "Virgin Islands"
-}
+# stateReplacement = {
+#   "United States Virgin Islands": "Virgin Islands"
+# }
 
-for key in stateReplacement:
-  old = key
-  new = stateReplacement[key]
-  df["Province_State"] = df["Province_State"].replace(old, new)
+# for key in stateReplacement:
+#   old = key
+#   new = stateReplacement[key]
+#   df["Province_State"] = df["Province_State"].replace(old, new)
 
 
 ## == Remove 'Recovered' province entry == ##
