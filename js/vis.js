@@ -35,7 +35,7 @@ var reducer_sum_with_key = function(result, value, key) {
     return result;
 };
 
-var reducer_byUSstate = function(result, value, key) {
+var reducer_byProv_State = function(result, value, key) {
     country = value["Country_Region"];
     state = value["Province_State"];
 
@@ -58,7 +58,7 @@ var reducer_byCountry = function(result, value, key) {
 
 
 // default province and country value
-var defaultState = "British Columbia";
+var defaultProv_State = "British Columbia";
 var defaultCountry = "Canada";
 
 
@@ -82,9 +82,9 @@ var charts = {
         data: null
     },
     'states': {
-        reducer: reducer_byUSstate,
+        reducer: reducer_byProv_State,
         scale: "log",
-        highlight: defaultState,
+        highlight: defaultProv_State,
         y0: 5,
         xCap: 40,
         id: "chart-states",
@@ -115,9 +115,9 @@ var charts = {
         data: null
     },
     'states-normalized': {
-        reducer: reducer_byUSstate,
+        reducer: reducer_byProv_State,
         scale: "log",
-        highlight: defaultState,
+        highlight: defaultProv_State,
         y0: 1,
         xCap: 40,
         id: "chart-states-normalized",
