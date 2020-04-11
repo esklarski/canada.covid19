@@ -1,5 +1,5 @@
 ## == define JHU data location == ##
-path = '../../data/'
+path = '../../COVID-19/csse_covid_19_data/csse_covid_19_daily_reports/'
 
 
 ## == province_state translation == ##
