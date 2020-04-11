@@ -1,5 +1,5 @@
-var _dateUpdated = "2020/04/09";
-var _timeUpdated = "22:30h"
+var _dateUpdated = "2020/04/10";
+var _timeUpdated = "19:00h"
 
 function updateSpan() {
     document.getElementById("update-date").textContent = _dateUpdated;
