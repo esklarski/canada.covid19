@@ -56,38 +56,9 @@ var reducer_byCountry = function(result, value, key) {
 };
 
 
-// use a cookie to store country data
-// - src: https://www.w3schools.com/js/js_cookies.asp
-function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
-// find default state value
-var stored;
-
+// default province and country value
 var defaultState = "British Columbia";
-if ((stored = getCookie("state")) != "") { defaultState = stored; }
-
 var defaultCountry = "Canada";
-if ((stored = getCookie("country")) != "") { defaultCountry = stored; }
 
 
 // chart metadata
@@ -117,7 +88,7 @@ var charts = {
         xCap: 40,
         id: "chart-states",
         normalizePopulation: false,
-        show: 9999,
+        show: 25,
         sort: function(d) { return -d.maxCases; },
         dataSelection: 'cases',
         dataSelection_y0: { 'active': 5, 'cases': 5, 'deaths': 1, 'recovered': 1 },
@@ -152,7 +123,7 @@ var charts = {
         id: "chart-states-normalized",
         normalizePopulation: "state",
         popQuantum: { 'active': 1e5, 'cases': 1e5, 'deaths': 5e5, 'recovered': 1e6 },
-        show: 9999,
+        show: 25,
         sort: function(d) { return -d.maxCases; },
         dataSelection: 'cases',
         dataSelection_y0: { 'active': 1, 'cases': 1, 'deaths': 1, 'recovered': 1 },
@@ -214,9 +185,6 @@ var prep_data = function(chart) {
     $highlight.change(function(e) {
         var val = $(e.target).val()
         chart.highlight = val;
-
-        if (chart.id.indexOf("countries") != -1) { setCookie('country', val, 30); }
-        if (chart.id.indexOf("states") != -1) { setCookie('state', val, 30); }
         render(chart);
     });
 
