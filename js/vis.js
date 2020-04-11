@@ -4,7 +4,8 @@ var dateColumns = [];
 var _client_width = -1;
 var _intial_load = true;
 
-// Resize
+
+// resize site when width changes
 $(window).resize(function() {
     if (_rawData != null) {
         var new_width = $("#sizer").width();
@@ -18,7 +19,7 @@ $(window).resize(function() {
 });
 
 
-// reducers
+// chart data reducers
 var reducer_sum_with_key = function(result, value, key) {
     if (!result[key]) { result[key] = {} }
     let obj = result[key];
@@ -96,7 +97,6 @@ var charts = {
         yMax: null,
         data: null
     },
-
     'countries-normalized': {
         reducer: reducer_byCountry,
         scale: "log",
@@ -134,6 +134,7 @@ var charts = {
 };
 
 
+// math function
 var findNextExp = function(x) {
     var pow10 = Math.pow(10, Math.ceil(Math.log10(x)));
 
@@ -144,6 +145,8 @@ var findNextExp = function(x) {
     return val;
 };
 
+
+// ? filter final data for dispaly, handle page ?
 var prep_data = function(chart) {
     var caseData = chart.fullData;
 
@@ -193,6 +196,7 @@ var prep_data = function(chart) {
 };
 
 
+// ? process data for display ?
 var process_data = function(data, chart) {
     var agg = _.reduce(data, chart.reducer, {});
 
@@ -296,6 +300,8 @@ var process_data = function(data, chart) {
     return prep_data(chart);
 };
 
+
+// file downloads
 var covidData_promise = d3.csv(JHUsource, function(row) {
     row["Active"] = +row["Active"];
     row["Confirmed"] = +row["Confirmed"];
@@ -310,14 +316,18 @@ var populationData_promise = d3.csv(POPsource, function(row) {
 });
 
 
+// page status variables
 var _dataReady = false,
     _pageReady = false;
 
 
+// call renderer for all charts
 var tryRender = function() {
     if (_dataReady && _pageReady) {
+        // try the first chart
         process_data(_rawData, charts["countries"]);
         render(charts["countries"]);
+        // call other charts with timeout
         setTimeout(initialRender2, 100);
     }
 }
@@ -336,7 +346,7 @@ var initialRender2 = function() {
 };
 
 
-
+// collect promises
 Promise.all([covidData_promise, populationData_promise])
     .then(function(result) {
         data = result[0];
@@ -359,9 +369,7 @@ Promise.all([covidData_promise, populationData_promise])
     });
 
 
-
-
-
+// select functions
 $(function() {
     $(".scaleSelection").mouseup(function(e) {
         var value = $(e.target).data("scale");
@@ -409,6 +417,7 @@ $(function() {
 });
 
 
+// graph tooltip
 var tip_html = function(chart) {
     return function(d, i) {
         var geometicGrowth = Math.pow(d.cases / chart.y0, 1 / d.dayCounter);
@@ -464,6 +473,8 @@ var tip_html = function(chart) {
     }
 };
 
+
+// render chart
 var render = function(chart) {
     data_y0 = chart.y0;
     gData = undefined;
