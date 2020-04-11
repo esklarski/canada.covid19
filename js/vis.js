@@ -688,10 +688,14 @@ var render = function(chart) {
             .attr("fill", "none")
             .attr("stroke", colorScale(i))
             .attr("stroke-width", function(d) {
-                if (d[0].country == chart.highlight) { return 4; } else { return 1; }
+                if (d[0].country == chart.highlight) { return 3; }
+                else if (d[0].country == "Canada") { return 2; }
+                else { return 1; }
             })
             .style("opacity", function(d) {
-                if (d[0].country == chart.highlight || d[0].country == "Canada") { return 1; } else { return 0.3; }
+                if (d[0].country == chart.highlight) { return 1; }
+                else if (d[0].country == "Canada") { return 0.7; }
+                else { return 0.4; }
             })
             .attr("d", d3.line()
                 .x(function(d) { return daysScale(d.dayCounter); })
@@ -711,11 +715,11 @@ var render = function(chart) {
                 return casesScale(d.cases);
             })
             .style("opacity", function(d) {
-                if (d.country == chart.highlight) { return 0.5; } else { return 0.2; }
+                if (d.country == chart.highlight || d.country == "Canada") { return 0.8; } else { return 0.3; }
             })
             .attr("r", function(d) {
                 if (d.cases < 1) { return 0; }
-                if (d.country == chart.highlight) { return 4; } else { return 3; }
+                if (d.country == chart.highlight) { return 3; } else { return 2; }
             })
             .attr("fill", colorScale(i))
             .on('mouseover', tip.show)
@@ -725,10 +729,10 @@ var render = function(chart) {
             .attr("fill", colorScale(i))
             .attr("class", "label-country")
             .style("opacity", function() {
-                if (countryData.data[0].country == chart.highlight || countryData.data[0].country == "Canada") { return 1; } else { return 0.3; }
+                if (countryData.data[0].country == chart.highlight || countryData.data[0].country == "Canada") { return 1; } else { return 0.5; }
             })
             .style("font-size", function() {
-                if (countryData.data[0].country == chart.highlight) { return "15px"; } else { return null; }
+                if (countryData.data[0].country == chart.highlight) { return "12px"; } else { return null; }
             })
             .text(countryData.country);
 
