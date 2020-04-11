@@ -176,7 +176,18 @@ var findNextExp = function(x) {
 var prep_data = function(chart) {
     var caseData = chart.fullData;
 
-    if (chart.show < 9999) { caseData = _.take(caseData, chart.show); }
+    // grab Canada data
+    let canada = caseData.find(o => o.country === 'Canada');
+
+    if (chart.show < 9999) {
+        // filter number of displayed countries
+        caseData = _.take(caseData, chart.show);
+        // append Canada if missing
+        if (caseData.find(o => o.country === 'Canada') === undefined) {
+            caseData.push(canada);
+        }
+    }
+
     var countries = _.map(caseData, 'country').sort();
 
     // ensure highlighted country shows when new page load with cookie
