@@ -711,7 +711,7 @@ var render = function(chart) {
                 return casesScale(d.cases);
             })
             .style("opacity", function(d) {
-                if (d.country == chart.highlight) { return 1; } else { return 0.3; }
+                if (d.country == chart.highlight) { return 0.5; } else { return 0.2; }
             })
             .attr("r", function(d) {
                 if (d.cases < 1) { return 0; }
