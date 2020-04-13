@@ -77,9 +77,7 @@ var charts = {
         dataSelection: 'cases',
         showDelta: false,
         dataSelection_y0: { 'active': 100, 'cases': 100, 'deaths': 10, 'recovered': 100, 'new-cases': 1 },
-        xMax: null,
-        yMax: null,
-        data: null
+        xMax: null, yMax: null, data: null,
     },
     'states': {
         reducer: reducer_byProv_State,
@@ -93,9 +91,7 @@ var charts = {
         sort: function(d) { return -d.maxCases; },
         dataSelection: 'cases',
         dataSelection_y0: { 'active': 5, 'cases': 5, 'deaths': 1, 'recovered': 1 },
-        xMax: null,
-        yMax: null,
-        data: null
+        xMax: null, yMax: null, data: null,
     },
     'countries-normalized': {
         reducer: reducer_byCountry,
@@ -110,9 +106,7 @@ var charts = {
         sort: function(d) { return -d.maxCases + -(d.pop / 1e2); },
         dataSelection: 'cases',
         dataSelection_y0: { 'active': 1, 'cases': 1, 'deaths': 1, 'recovered': 1 },
-        xMax: null,
-        yMax: null,
-        data: null
+        xMax: null, yMax: null, data: null,
     },
     'states-normalized': {
         reducer: reducer_byProv_State,
@@ -127,9 +121,7 @@ var charts = {
         sort: function(d) { return -d.maxCases; },
         dataSelection: 'cases',
         dataSelection_y0: { 'active': 1, 'cases': 1, 'deaths': 1, 'recovered': 1 },
-        xMax: null,
-        yMax: null,
-        data: null
+        xMax: null, yMax: null, data: null,
     },
 };
 
