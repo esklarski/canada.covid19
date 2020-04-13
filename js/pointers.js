@@ -1,8 +1,8 @@
-var JHUsource = formatJHUsource();
+var JHUsource = JHUsource();
 
-function formatJHUsource() {
+function JHUsource() {
     var temp = _dateUpdated.split('/');
-    return "dataset/jhu-data.csv?d=" + temp[2] + temp[0] + temp[1]
+    return "dataset/jhu-data.csv?d=" + temp[0] + temp[1] + temp[2];
 }
 
-var POPsource = "dataset/wikipedia-population.csv"
+var POPsource = "dataset/wikipedia-population.csv";
