@@ -454,13 +454,16 @@ var tip_html = function(chart) {
             s2 = " per " + quantum.toLocaleString() + " people";
         }
 
+        var tipDate = d.date.split("-");
+        tipDate = tipDate[2] + "-" + tipDate[0] + "-" + tipDate[1];
+
         var dataLabel = "";
         if (chart.showDelta) { dataLabel = "new "; }
 
         if (chart.dataSelection == 'cases') { dataLabel += "confirmed cases"; } else if (chart.dataSelection == 'active') { dataLabel += "active cases"; } else if (chart.dataSelection == 'deaths') { dataLabel += "deaths from COVID-19"; } else if (chart.dataSelection == 'recovered') { dataLabel += "recoveries"; }
 
         var s = `<div class="tip-country">${d.country} &ndash; Day ${d.dayCounter}</div>
-             <div class="tip-details" style="border-bottom: solid 1px black; padding-bottom: 2px;"><b>${d.cases.toLocaleString("en-US", {maximumFractionDigits: 1})}</b> ${dataLabel}${s2} on ${d.date} (<b>${d.dayCounter}</b> days after reaching ${chart.y0} ${dataLabel}${s2})</div>`;
+             <div class="tip-details" style="border-bottom: solid 1px black; padding-bottom: 2px;"><b>${d.cases.toLocaleString("en-US", {maximumFractionDigits: 1})}</b> ${dataLabel}${s2} on ${tipDate} (<b>${d.dayCounter}</b> days after reaching ${chart.y0} ${dataLabel}${s2})</div>`;
 
         if (geoGrowth.length > 0) {
             s += `<div class="tip-details"><i><u>Avg. geometric growth</u>:<br>`;
