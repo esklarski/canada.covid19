@@ -176,7 +176,8 @@ var prep_data = function(chart) {
     $highlight.html("");
 
     if (countries.indexOf(chart.highlight) == -1) {
-        if (chart.id.indexOf("states") == -1) { chart.highlight = "Canada"; } else { chart.highlight = "British Columbia"; }
+        if (chart.id.indexOf("states") == -1) { chart.highlight = "Canada"; }
+        else { chart.highlight = "British Columbia"; }
     }
 
     $.each(countries, function() {
@@ -231,7 +232,8 @@ var process_data = function(data, chart) {
             }
 
             if (chart.showDelta) {
-                if (i == 0) { cases = 0; } else {
+                if (i == 0) { cases = 0; }
+                else {
                     prevCases = agg[country][dates[i - 1]][chart.dataSelection];
                     if (chart.normalizePopulation) {
                         cases = agg[country][date][chart.dataSelection];
@@ -317,8 +319,7 @@ var populationData_promise = d3.csv(POPsource, function(row) {
 
 
 // page status variables
-var _dataReady = false,
-    _pageReady = false;
+var _dataReady = false, _pageReady = false;
 
 
 // call renderer for all charts
@@ -460,7 +461,10 @@ var tip_html = function(chart) {
         var dataLabel = "";
         if (chart.showDelta) { dataLabel = "new "; }
 
-        if (chart.dataSelection == 'cases') { dataLabel += "confirmed cases"; } else if (chart.dataSelection == 'active') { dataLabel += "active cases"; } else if (chart.dataSelection == 'deaths') { dataLabel += "deaths from COVID-19"; } else if (chart.dataSelection == 'recovered') { dataLabel += "recoveries"; }
+        if (chart.dataSelection == 'cases') { dataLabel += "confirmed cases"; }
+        else if (chart.dataSelection == 'active') { dataLabel += "active cases"; }
+        else if (chart.dataSelection == 'deaths') { dataLabel += "deaths from COVID-19"; }
+        else if (chart.dataSelection == 'recovered') { dataLabel += "recoveries"; }
 
         var s = `<div class="tip-country">${d.country} &ndash; Day ${d.dayCounter}</div>
              <div class="tip-details" style="border-bottom: solid 1px black; padding-bottom: 2px;"><b>${d.cases.toLocaleString("en-US", {maximumFractionDigits: 1})}</b> ${dataLabel}${s2} on ${tipDate} (<b>${d.dayCounter}</b> days after reaching ${chart.y0} ${dataLabel}${s2})</div>`;
@@ -512,7 +516,8 @@ var render = function(chart) {
 
     // Y-axis scale (# of cases)                    
     var casesScale;
-    if (chart.scale == "log") { casesScale = d3.scaleLog(); } else { casesScale = d3.scaleLinear(); }
+    if (chart.scale == "log") { casesScale = d3.scaleLog(); }
+    else { casesScale = d3.scaleLinear(); }
 
     scale_y0 = chart.y0;
     if (chart.showDelta) {
@@ -560,7 +565,8 @@ var render = function(chart) {
         if (tickValue >= scale_y0) { tickValues.push(tickValue); }
         tickValue *= tickValueIncrease;
 
-        if (tickValueIncrease == 5) { tickValueIncrease = 2; } else { tickValueIncrease = 5; }
+        if (tickValueIncrease == 5) { tickValueIncrease = 2; }
+        else { tickValueIncrease = 5; }
     }
 
     var y_axis = d3.axisLeft(casesScale).tickFormat(d3.format("0,"));
@@ -619,7 +625,8 @@ var render = function(chart) {
             .append("path")
             .attr("fill", "none")
             .attr("stroke", function() {
-                if (scaleLineMeta.color) { return scaleLineMeta.color; } else { return "#999"; }
+                if (scaleLineMeta.color) { return scaleLineMeta.color; }
+                else { return "#999"; }
             })
             .attr("stroke-width", 2)
             .attr("stroke-dasharray", 12)
@@ -633,17 +640,21 @@ var render = function(chart) {
             .attr("class", "label-country")
             .attr("x", function() {
                 if (xMax_y == -1) {
-                    return daysScale(Math.log(chart.yMax / data_y0)) / Math.log(scaleLineMeta.gRate) - ((isSmall) ? 10 : 25);
+                    return daysScale(
+                        Math.log(chart.yMax / data_y0)) / Math.log(scaleLineMeta.gRate) - ((isSmall) ? 10 : 25
+                    );
                 } else {
                     return daysScale(Math.log(xMax_y / data_y0)) / Math.log(scaleLineMeta.gRate) + 10;
                 }
             })
             .attr("y", function() {
-                if (xMax_y == -1) { return casesScale(chart.yMax) + 12; } else { return casesScale(xMax_y) - 5; }
+                if (xMax_y == -1) { return casesScale(chart.yMax) + 12; }
+                else { return casesScale(xMax_y) - 5; }
             })
             .attr("text-anchor", "end")
             .attr("fill", function() {
-                if (scaleLineMeta.color) { return scaleLineMeta.color; } else { return "black"; }
+                if (scaleLineMeta.color) { return scaleLineMeta.color; }
+                else { return "black"; }
             })
             .text(scaleLineMeta.label);
     }
@@ -653,7 +664,10 @@ var render = function(chart) {
         : "";
 
     var xAxisLabel = `Days since ${chart.y0} `
-    if (chart.dataSelection == 'cases') { xAxisLabel += "case"; if (chart.y0 != 1) { xAxisLabel += "s"; } } else if (chart.dataSelection == 'active') { xAxisLabel += "active case"; if (chart.y0 != 1) { xAxisLabel += "s"; } } else if (chart.dataSelection == 'deaths') { xAxisLabel += "death"; if (chart.y0 != 1) { xAxisLabel += "s"; } } else if (chart.dataSelection == 'recovered') { xAxisLabel += "recover"; if (chart.y0 != 1) { xAxisLabel += "ies"; } else { xAxisLabel += "y"; } }
+    if (chart.dataSelection == 'cases') { xAxisLabel += "case"; if (chart.y0 != 1) { xAxisLabel += "s"; } }
+    else if (chart.dataSelection == 'active') { xAxisLabel += "active case"; if (chart.y0 != 1) { xAxisLabel += "s"; } }
+    else if (chart.dataSelection == 'deaths') { xAxisLabel += "death"; if (chart.y0 != 1) { xAxisLabel += "s"; } }
+    else if (chart.dataSelection == 'recovered') { xAxisLabel += "recover"; if (chart.y0 != 1) { xAxisLabel += "ies"; } else { xAxisLabel += "y"; } }
 
     xAxisLabel += quantum;
 
@@ -666,7 +680,10 @@ var render = function(chart) {
 
     var yAxisLabel = "";
     if (chart.showDelta) { yAxisLabel += "New Daily "; }
-    if (chart.dataSelection == 'cases') { yAxisLabel += "Confirmed Cases"; } else if (chart.dataSelection == 'active') { yAxisLabel += "Active Cases"; } else if (chart.dataSelection == 'deaths') { yAxisLabel += "COVID-19 Deaths"; } else if (chart.dataSelection == 'recovered') { yAxisLabel += "Recoveries" }
+    if (chart.dataSelection == 'cases') { yAxisLabel += "Confirmed Cases"; }
+    else if (chart.dataSelection == 'active') { yAxisLabel += "Active Cases"; }
+    else if (chart.dataSelection == 'deaths') { yAxisLabel += "COVID-19 Deaths"; }
+    else if (chart.dataSelection == 'recovered') { yAxisLabel += "Recoveries" }
 
     yAxisLabel += quantum;
 
@@ -729,11 +746,13 @@ var render = function(chart) {
                 return casesScale(d.cases);
             })
             .style("opacity", function(d) {
-                if (d.country == chart.highlight || d.country == "Canada") { return 0.8; } else { return 0.3; }
+                if (d.country == chart.highlight || d.country == "Canada") { return 0.8; }
+                else { return 0.3; }
             })
             .attr("r", function(d) {
                 if (d.cases < 1) { return 0; }
-                if (d.country == chart.highlight) { return 3; } else { return 2; }
+                if (d.country == chart.highlight) { return 3; }
+                else { return 2; }
             })
             .attr("fill", colorScale(i))
             .on('mouseover', tip.show)
@@ -743,10 +762,12 @@ var render = function(chart) {
             .attr("fill", colorScale(i))
             .attr("class", "label-country")
             .style("opacity", function() {
-                if (countryData.data[0].country == chart.highlight || countryData.data[0].country == "Canada") { return 1; } else { return 0.5; }
+                if (countryData.data[0].country == chart.highlight || countryData.data[0].country == "Canada") { return 1; }
+                else { return 0.5; }
             })
             .style("font-size", function() {
-                if (countryData.data[0].country == chart.highlight) { return "12px"; } else { return null; }
+                if (countryData.data[0].country == chart.highlight) { return "12px"; }
+                else { return null; }
             })
             .text(countryData.country);
 
