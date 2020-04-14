@@ -516,6 +516,7 @@ var render = function(chart) {
         scale_y0 = 1;
     }
 
+
     casesScale.domain([scale_y0, chart.yMax]).range([height, 0]);
 
     // Color Scale
