@@ -1,4 +1,4 @@
-var _dateUpdated = "2020/04/16";
+var _dateUpdated = "2020/04/17";
 var _timeUpdated = "17:30h"
 
 function updateSpan() {
