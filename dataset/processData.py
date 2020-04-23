@@ -1,19 +1,23 @@
+## == define Canada 'Recoveries' data location == ##
+# path_recoveries = '../../../Covid19Canada/'
+recoveries_file = '../../Covid19Canada/recovered_cumulative.csv'
+
 ## == define JHU data location == ##
-path = '../../COVID-19/csse_covid_19_data/csse_covid_19_daily_reports/'
+path_JHUdata = '../../COVID-19/csse_covid_19_data/csse_covid_19_daily_reports/'
 
 
 ## == province_state translation == ##
 stateTranslation = [
   # ['Alberta', 'AB'],
-  # ['British Columbia', 'BC'],
+  ['British Columbia', 'BC'],
   # ['Manitoba', 'MB'],
   # ['New Brunswick', 'NB'],
-  # ['Newfoundland and Labrador', 'NL'],
-  # ['Northwest Territories', 'NT'],
+  ['Newfoundland and Labrador', 'NL'],
+  ['Northwest Territories', 'NWT'],
   # ['Nova Scotia', 'NS'],
   # ['Nunavut', 'NU'],
   ['Ontario', 'ON'],
-  # ['Prince Edward Island', 'PE'],
+  ['Prince Edward Island', 'PEI'],
   ['Quebec', 'QC'],
   # ['Saskatchewan', 'SK'],
   # ['Yukon', 'YT'],
@@ -25,6 +29,8 @@ for el in stateTranslation:
   stateDict[ el[1] ] = el[0]
 
 
+
+###### == =========================== JHU data ================================ == ######
 ## == translate inconsistent provine_state names == ##
 def translateState(row):
   state = str(row["Province_State"]).strip()
@@ -44,7 +50,7 @@ def processDate(date):
   print(date)
 
   # read file
-  df = pd.read_csv(path + date + ".csv")
+  df = pd.read_csv(path_JHUdata + date + ".csv")
 
   # rename column headings for consistency
   if 'Country/Region' in df:
@@ -109,7 +115,7 @@ import os
 df = pd.DataFrame()
 
 # pull in files and sort
-files = os.listdir(path)
+files = os.listdir(path_JHUdata)
 files.sort()
 
 for filename in files:
@@ -181,4 +187,73 @@ df = df.astype({"Confirmed": "int32", "Recovered": "int32", "Active": "int32", "
 
 
 ## == print(df) to file == ##
-df.to_csv('jhu-data-delta.csv', index=False)
+temp_file = 'jhu-data-temp.csv'
+df.to_csv(temp_file, index=False)
+
+
+
+###### == =================== Canada 'Recoveries' data ======================== == ######
+## == translate province names to JHU names == ##
+def translateRecoveryProv(row):
+  state = str(row["province"]).strip()
+  if state in stateDict:
+    row["province"] = stateDict[state]
+
+  return row
+
+
+## == correct date format == ##
+def translateDate(row):
+  temp = str(row["date_recovered"]).strip().split("-")
+  row["date_recovered"] = temp[1] + "-" + temp[0] + "-" + temp[2]
+
+  return row
+
+
+## == add recovered and calc active == ##
+def modData(row):
+  row['Recovered'] = recovered
+  row['Active'] = row['Confirmed'] - row['Recovered'] - row['Deaths']
+
+  return row
+
+
+## == read in recoveries file == ##
+rf = pd.read_csv(recoveries_file)
+
+## == deal with entries, convert to 0 == ##
+rf['cumulative_recovered'] = rf['cumulative_recovered'].fillna(0)
+rf['cumulative_recovered'] = rf['cumulative_recovered'].round(decimals=0).astype(int)
+
+## == apply date and name transforms == ##
+rf = rf.apply( translateDate, axis=1 )
+rf = rf.apply( translateRecoveryProv, axis=1 )
+
+## == bring in jhu-data again == ##
+df = pd.read_csv(temp_file)
+
+for row in rf.iterrows():
+  ## == gather data from file == ##
+  date = row[1]['date_recovered']
+  province = row[1]['province']
+  recovered = row[1]['cumulative_recovered']
+
+  ## == find index of matching line in JHU data == ##
+  index = df.index[ (df["Date"] == date) & (df["Province_State"] == province) ]
+
+  ## == ignore empty indexes: recoveries dataset lists all == ##
+  ## ==                       days for each province       == ##
+  if df.loc[index].empty:
+    continue
+  else:
+    df.loc[index] = modData(df.loc[index])
+
+## == write final file == ##
+df.to_csv('merged-data.csv', index=False)
+
+
+## == remove temp file == ##
+if os.path.isfile(temp_file):
+    os.remove(temp_file)
+else:  ## Show an error ##
+    print("Error: %s file not found" % temp_file)
