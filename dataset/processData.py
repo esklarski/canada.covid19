@@ -221,7 +221,7 @@ def modData(row):
 ## == read in recoveries file == ##
 rf = pd.read_csv(recoveries_file)
 
-## == deal with entries, convert to 0 == ##
+## == deal with invalid entries, convert to 0 == ##
 rf['cumulative_recovered'] = rf['cumulative_recovered'].fillna(0)
 rf['cumulative_recovered'] = rf['cumulative_recovered'].round(decimals=0).astype(int)
 
