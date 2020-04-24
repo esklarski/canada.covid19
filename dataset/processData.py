@@ -30,7 +30,7 @@ for el in stateTranslation:
 
 
 
-###### == =========================== JHU data ================================ == ######
+###### == ========================= JHU data ============================== == ######
 ## == translate inconsistent provine_state names == ##
 def translateState(row):
   state = str(row["Province_State"]).strip()
@@ -192,7 +192,7 @@ df.to_csv(temp_file, index=False)
 
 
 
-###### == =================== Canada 'Recoveries' data ======================== == ######
+###### == ================= Canada 'Recoveries' data ====================== == ######
 ## == translate province names to JHU names == ##
 def translateRecoveryProv(row):
   state = str(row["province"]).strip()
