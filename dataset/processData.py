@@ -219,6 +219,7 @@ def modData(row):
 
 
 ## == read in recoveries file == ##
+print("parsing recoveries data")
 rf = pd.read_csv(recoveries_file)
 
 ## == deal with invalid entries (0), convert to int == ##
@@ -230,6 +231,7 @@ rf = rf.apply( translateDate, axis=1 )
 rf = rf.apply( translateRecoveryProv, axis=1 )
 
 ## == bring in jhu-data again == ##
+print("merging datasets")
 df = pd.read_csv(temp_file)
 
 for row in rf.iterrows():
@@ -256,3 +258,5 @@ if os.path.isfile(temp_file):
     os.remove(temp_file)
 else:  ## Show an error ##
     print("Error: %s file not found" % temp_file)
+
+print("Done!")
