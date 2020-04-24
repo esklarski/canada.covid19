@@ -236,7 +236,6 @@ for row in rf.iterrows():
   ## == gather data from file == ##
   date = row[1]['date_recovered']
   province = row[1]['province']
-  recovered = row[1]['cumulative_recovered']
 
   ## == find index of matching line in JHU data == ##
   index = df.index[ (df["Date"] == date) & (df["Province_State"] == province) ]
@@ -246,6 +245,7 @@ for row in rf.iterrows():
   if df.loc[index].empty:
     continue
   else:
+    recovered = row[1]['cumulative_recovered']
     df.loc[index] = modData(df.loc[index])
 
 ## == write final file == ##
