@@ -240,8 +240,7 @@ for row in rf.iterrows():
   ## == find index of matching line in JHU data == ##
   index = df.index[ (df["Date"] == date) & (df["Province_State"] == province) ]
 
-  ## == ignore empty indexes: recoveries dataset lists all == ##
-  ## ==                       days for each province       == ##
+  ## == ignore empty indexes: == ##
   if df.loc[index].empty:
     continue
   else:
