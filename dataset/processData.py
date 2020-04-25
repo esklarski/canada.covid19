@@ -110,6 +110,7 @@ def processDate(date):
 ## == main process == ##
 import pandas as pd
 import os
+import time
 
 # create output storage variable
 df = pd.DataFrame()
@@ -117,6 +118,8 @@ df = pd.DataFrame()
 # pull in files and sort
 files = os.listdir(path_JHUdata)
 files.sort()
+
+startJHU = time.time()
 
 for filename in files:
   # only take .csv files
@@ -190,10 +193,17 @@ df = df.astype({"Confirmed": "int32", "Recovered": "int32", "Active": "int32", "
 temp_file = 'jhu-data-temp.csv'
 df.to_csv(temp_file, index=False)
 
+endJHU = time.time()
+elapsedJHU = endJHU - startJHU
+print(str("%5.2f" % (elapsedJHU))+ "s elapsed")
+
 
 
 ###### == ================= Canada 'Recoveries' data ====================== == ######
 ## == translate province names to JHU names == ##
+
+startRecv = time.time()
+
 def translateRecoveryProv(row):
   state = str(row["province"]).strip()
   if state in stateDict:
@@ -260,3 +270,9 @@ else:  ## Show an error ##
     print("Error: %s file not found" % temp_file)
 
 print("Done!")
+endRecv = time.time()
+elapsedRecv = endRecv - startRecv
+print(str("%5.2f" % (elapsedRecv))+ "s elapsed")
+
+totalTime = elapsedJHU + elapsedRecv
+print(str("%5.2f" % (totalTime)) + "s total")
