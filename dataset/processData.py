@@ -1,12 +1,12 @@
-## == define Canada 'Recoveries' data location == ##
+## == Covid19Canada 'Recoveries' data location == ##
 # path_recoveries = '../../../Covid19Canada/'
 recoveries_file = '../../Covid19Canada/recovered_cumulative.csv'
 
-## == define JHU data location == ##
+## == JHU data location == ##
 path_JHUdata = '../../COVID-19/csse_covid_19_data/csse_covid_19_daily_reports/'
 
 
-## == province_state translation == ##
+## == province_state translation dictionary == ##
 stateTranslation = [
   # ['Alberta', 'AB'],
   ['British Columbia', 'BC'],
@@ -30,7 +30,9 @@ for el in stateTranslation:
 
 
 
-###### == ========================= JHU data ============================== == ######
+###### == ============================= JHU data ================================== == ######
+
+
 ## == translate inconsistent provine_state names == ##
 def translateState(row):
   state = str(row["Province_State"]).strip()
@@ -112,14 +114,15 @@ import pandas as pd
 import os
 import time
 
+## == start time == ##
+startJHU = time.time()
+
 # create output storage variable
 df = pd.DataFrame()
 
 # pull in files and sort
 files = os.listdir(path_JHUdata)
 files.sort()
-
-startJHU = time.time()
 
 for filename in files:
   # only take .csv files
@@ -130,7 +133,6 @@ for filename in files:
 
   # process and append file to output
   df = df.append(processDate(date))
-
 
 ## == replace country name to match population == ##
 countryReplacement = {
@@ -164,7 +166,6 @@ for key in countryReplacement:
   new = countryReplacement[key]
   df["Country_Region"] = df["Country_Region"].replace(old, new)
 
-
 ## == Fix state names == ##
 # stateReplacement = {
 #   "United States Virgin Islands": "Virgin Islands"
@@ -175,7 +176,6 @@ for key in countryReplacement:
 #   new = stateReplacement[key]
 #   df["Province_State"] = df["Province_State"].replace(old, new)
 
-
 ## == Remove 'Recovered' province entry == ##
 entryRemoval = {
   "Recovered": "Recovered",
@@ -184,26 +184,24 @@ entryRemoval = {
 for key in entryRemoval:
   df = df[ df['Province_State'].str.contains(entryRemoval[key]) != True ]
 
-
 ## == define entry types == ##
 df = df.astype({"Confirmed": "int32", "Recovered": "int32", "Active": "int32", "Deaths": "int32"})
-
 
 ## == print(df) to file == ##
 temp_file = 'jhu-data-temp.csv'
 df.to_csv(temp_file, index=False)
 
+## == endJHU tume == ##
 endJHU = time.time()
 elapsedJHU = endJHU - startJHU
 print(str("%5.2f" % (elapsedJHU))+ "s elapsed")
 
 
 
-###### == ================= Canada 'Recoveries' data ====================== == ######
+###### == ===================== Canada 'Recoveries' data ========================== == ######
+
+
 ## == translate province names to JHU names == ##
-
-startRecv = time.time()
-
 def translateRecoveryProv(row):
   state = str(row["province"]).strip()
   if state in stateDict:
@@ -227,6 +225,9 @@ def modData(row):
 
   return row
 
+
+## == start Recoveries entries == ##
+startRecv = time.time()
 
 ## == read in recoveries file == ##
 print("parsing recoveries data")
@@ -262,17 +263,20 @@ for row in rf.iterrows():
 ## == write final file == ##
 df.to_csv('merged-data.csv', index=False)
 
-
 ## == remove temp file == ##
 if os.path.isfile(temp_file):
     os.remove(temp_file)
 else:  ## Show an error ##
     print("Error: %s file not found" % temp_file)
 
+## == wrap up messages == ##
 print("Done!")
 endRecv = time.time()
 elapsedRecv = endRecv - startRecv
 print(str("%5.2f" % (elapsedRecv))+ "s elapsed")
 
-totalTime = elapsedJHU + elapsedRecv
+
+
+## == total elapsed time== ##
+totalTime = endRecv - startJHU
 print(str("%5.2f" % (totalTime)) + "s total")
