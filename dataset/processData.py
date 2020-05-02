@@ -1,5 +1,4 @@
 ## == Covid19Canada 'Recoveries' data location == ##
-# path_recoveries = '../../../Covid19Canada/'
 recoveries_file = '../../Covid19Canada/recovered_cumulative.csv'
 
 ## == JHU data location == ##
@@ -31,7 +30,6 @@ for el in stateTranslation:
 
 
 ###### == ============================= JHU data ================================== == ######
-
 
 ## == translate inconsistent provine_state names == ##
 def translateState(row):
@@ -200,7 +198,6 @@ print(str("%5.2f" % (elapsedJHU))+ "s elapsed")
 
 ###### == ===================== Canada 'Recoveries' data ========================== == ######
 
-
 ## == translate province names to JHU names == ##
 def translateRecoveryProv(row):
   state = str(row["province"]).strip()
@@ -260,6 +257,19 @@ for row in rf.iterrows():
     recovered = row[1]['cumulative_recovered']
     df.loc[index] = modData(df.loc[index])
 
+
+
+###### == ==================== Calc 'Mortality' rate data ========================= == ######
+
+print("calculating mortality rate")
+df.insert(6, 'Mortality', '')
+df['Mortality'] = ( df['Deaths'] / df['Confirmed'] ) * 100
+df['Mortality'] = df['Mortality'].round(decimals=2).astype(float)
+
+
+
+###### == ====================== write-out and wrap-up ============================ == ######
+
 ## == write final file == ##
 df.to_csv('merged-data.csv', index=False)
 
@@ -269,13 +279,12 @@ if os.path.isfile(temp_file):
 else:  ## Show an error ##
     print("Error: %s file not found" % temp_file)
 
+
 ## == wrap up messages == ##
 print("Done!")
 endRecv = time.time()
 elapsedRecv = endRecv - startRecv
 print(str("%5.2f" % (elapsedRecv))+ "s elapsed")
-
-
 
 ## == total elapsed time== ##
 totalTime = endRecv - startJHU
