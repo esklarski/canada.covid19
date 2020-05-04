@@ -93,7 +93,7 @@ def processDate(date):
     df['Active'] = df['Confirmed'] - df['Recovered'] - df['Deaths']
   else:
     for value in df['Active']:
-      if value <= "0" or value == "":
+      if value <= 0 or value == "":
         df['Active'] = df['Confirmed'] - df['Recovered'] - df['Deaths']
       else:
         continue
