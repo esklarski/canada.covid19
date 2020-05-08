@@ -1,0 +1,31 @@
+Province                  ,Mortality
+Alberta                   ,1.89
+British Columbia          ,5.51
+Manitoba                  ,2.47
+New Brunswick             ,0.0
+Newfoundland and Labrador ,1.15
+Northwest Territories     ,0.0
+Nova Scotia               ,4.37
+Ontario                   ,7.88
+Prince Edward Island      ,0.0
+Quebec                    ,7.47
+Saskatchewan              ,1.32
+Yukon                     ,0.0
+Canada                    ,6.86
+
+
+
+Country_Region ,Province_State            ,Confirmed ,Recovered ,Active ,Deaths ,Mortality ,Date
+Canada         ,Alberta                   ,6017      ,3809      ,2094   ,114    ,1.89      ,05-07-2020
+Canada         ,British Columbia          ,2288      ,1512      ,650    ,126    ,5.51      ,05-07-2020
+Canada         ,Manitoba                  ,283       ,243       ,33     ,7      ,2.47      ,05-07-2020
+Canada         ,New Brunswick             ,120       ,118       ,2      ,0      ,0.0       ,05-07-2020
+Canada         ,Newfoundland and Labrador ,261       ,244       ,14     ,3      ,1.15      ,05-07-2020
+Canada         ,Northwest Territories     ,5         ,5         ,0      ,0      ,0.0       ,05-07-2020
+Canada         ,Nova Scotia               ,1007      ,708       ,255    ,44     ,4.37      ,05-07-2020
+Canada         ,Ontario                   ,20388     ,13569     ,5212   ,1607   ,7.88      ,05-07-2020
+Canada         ,Prince Edward Island      ,27        ,26        ,1      ,0      ,0.0       ,05-07-2020
+Canada         ,Quebec                    ,35249     ,8673      ,23944  ,2632   ,7.47      ,05-07-2020
+Canada         ,Saskatchewan              ,531       ,329       ,195    ,7      ,1.32      ,05-07-2020
+Canada         ,Yukon                     ,11        ,11        ,0      ,0      ,0.0       ,05-07-2020
+Canada         ,Canada                    ,66187     ,29260     ,32387  ,4540   ,6.86      ,05-07-2020
