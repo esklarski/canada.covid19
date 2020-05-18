@@ -1,5 +1,5 @@
-var _dateUpdated = "2020/05/16";
-var _timeUpdated = "20:45h"
+var _dateUpdated = "2020/05/17";
+var _timeUpdated = "21:00h"
 
 function initPage() {
     // update updated time
