@@ -1,4 +1,4 @@
-var _dateUpdated = "2020/06/16";
+var _dateUpdated = "2020/06/17";
 var _timeUpdated = "22:00h"
 
 function initPage() {
