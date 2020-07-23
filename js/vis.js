@@ -76,7 +76,7 @@ var charts = {
         sort: function(d) { return -d.maxCases; },
         dataSelection: 'active',
         showDelta: false,
-        dataSelection_y0: { 'active': 100, 'cases': 100, 'deaths': 10, 'recovered': 100, 'new-cases': 1 },
+        dataSelection_y0: { 'active': 100, 'cases': 100, 'deaths': 10, 'recovered': 100, 'new-cases': 0 },
         xMax: null, yMax: null, data: null,
     },
     'states': {
