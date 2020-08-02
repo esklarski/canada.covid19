@@ -578,79 +578,79 @@ var render = function(chart) {
 
     // Add Data
     // Create doubling lines
-    let scaleLinesMeta = [{
-        label: "2 days",
-        gRate: Math.pow(2, 1 / 2)
-    },
-    {
-        label: "3 days",
-        gRate: Math.pow(2, 1 / 3)
-    },
-    {
-        label: "1 week",
-        gRate: Math.pow(2, 1 / 7)
-    },
-    {
-        label: "2 weeks",
-        gRate: Math.pow(2, 1 / 14)
-    }]
+    // let scaleLinesMeta = [{
+    //     label: "2 days",
+    //     gRate: Math.pow(2, 1 / 2)
+    // },
+    // {
+    //     label: "3 days",
+    //     gRate: Math.pow(2, 1 / 3)
+    // },
+    // {
+    //     label: "1 week",
+    //     gRate: Math.pow(2, 1 / 7)
+    // },
+    // {
+    //     label: "2 weeks",
+    //     gRate: Math.pow(2, 1 / 14)
+    // }]
 
-    for (var scaleLineMeta of scaleLinesMeta) {
-        var cases = data_y0,
-            day = 0,
-            xMax_y = -1;
-        var pctLine = [];
-        while (cases < 2 * chart.yMax) {
-            pctLine.push({
-                dayCounter: day,
-                cases: cases
-            })
+    // for (var scaleLineMeta of scaleLinesMeta) {
+    //     var cases = data_y0,
+    //         day = 0,
+    //         xMax_y = -1;
+    //     var pctLine = [];
+    //     while (cases < 2 * chart.yMax) {
+    //         pctLine.push({
+    //             dayCounter: day,
+    //             cases: cases
+    //         })
 
-            if (day == chart.xMax) {
-                xMax_y = cases;
-            }
+    //         if (day == chart.xMax) {
+    //             xMax_y = cases;
+    //         }
 
-            day++;
-            cases *= scaleLineMeta.gRate;
-        }
+    //         day++;
+    //         cases *= scaleLineMeta.gRate;
+    //     }
 
-        svg.datum(pctLine)
-            .append("path")
-            .attr("fill", "none")
-            .attr("stroke", function() {
-                if (scaleLineMeta.color) { return scaleLineMeta.color; }
-                else { return "#999"; }
-            })
-            .attr("stroke-width", 2)
-            .attr("stroke-dasharray", 12)
-            .attr("d", d3.line()
-                .x(function(d) { return daysScale(d.dayCounter); })
-                .y(function(d) { return casesScale(d.cases); })
-            );
+    //     svg.datum(pctLine)
+    //         .append("path")
+    //         .attr("fill", "none")
+    //         .attr("stroke", function() {
+    //             if (scaleLineMeta.color) { return scaleLineMeta.color; }
+    //             else { return "#999"; }
+    //         })
+    //         .attr("stroke-width", 2)
+    //         .attr("stroke-dasharray", 12)
+    //         .attr("d", d3.line()
+    //             .x(function(d) { return daysScale(d.dayCounter); })
+    //             .y(function(d) { return casesScale(d.cases); })
+    //         );
 
-        svg.append("text")
-            .attr("fill", colorScale(i))
-            .attr("class", "label-country")
-            .attr("x", function() {
-                if (xMax_y == -1) {
-                    return daysScale(
-                        Math.log(chart.yMax / data_y0)) / Math.log(scaleLineMeta.gRate) - ((isSmall) ? 10 : 25
-                    );
-                } else {
-                    return daysScale(Math.log(xMax_y / data_y0)) / Math.log(scaleLineMeta.gRate) + 10;
-                }
-            })
-            .attr("y", function() {
-                if (xMax_y == -1) { return casesScale(chart.yMax) + 12; }
-                else { return casesScale(xMax_y) - 5; }
-            })
-            .attr("text-anchor", "end")
-            .attr("fill", function() {
-                if (scaleLineMeta.color) { return scaleLineMeta.color; }
-                else { return "black"; }
-            })
-            .text(scaleLineMeta.label);
-    }
+    //     svg.append("text")
+    //         .attr("fill", colorScale(i))
+    //         .attr("class", "label-country")
+    //         .attr("x", function() {
+    //             if (xMax_y == -1) {
+    //                 return daysScale(
+    //                     Math.log(chart.yMax / data_y0)) / Math.log(scaleLineMeta.gRate) - ((isSmall) ? 10 : 25
+    //                 );
+    //             } else {
+    //                 return daysScale(Math.log(xMax_y / data_y0)) / Math.log(scaleLineMeta.gRate) + 10;
+    //             }
+    //         })
+    //         .attr("y", function() {
+    //             if (xMax_y == -1) { return casesScale(chart.yMax) + 12; }
+    //             else { return casesScale(xMax_y) - 5; }
+    //         })
+    //         .attr("text-anchor", "end")
+    //         .attr("fill", function() {
+    //             if (scaleLineMeta.color) { return scaleLineMeta.color; }
+    //             else { return "black"; }
+    //         })
+    //         .text(scaleLineMeta.label);
+    // }
 
     var quantum = (chart.normalizePopulation)
         ? " /" + (chart.popQuantum[chart.dataSelection] || chart.popQuantum).toLocaleString()
