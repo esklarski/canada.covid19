@@ -8,5 +8,7 @@ function initPage() {
 
     // set all select elements to default index
     Array.from( document.getElementsByClassName("data-select") )
-         .forEach( function(select) { select.selectedIndex = "0"; } )
+         .forEach( function(select) { select.selectedIndex = "0"; } );
+    Array.from( document.getElementsByClassName("yaxis-select") )
+         .forEach( function(select) { select.selectedIndex = "0"; } );
 }
