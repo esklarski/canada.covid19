@@ -164,16 +164,6 @@ for key in countryReplacement:
   new = countryReplacement[key]
   df["Country_Region"] = df["Country_Region"].replace(old, new)
 
-## == Fix state names == ##
-# stateReplacement = {
-#   "United States Virgin Islands": "Virgin Islands"
-# }
-
-# for key in stateReplacement:
-#   old = key
-#   new = stateReplacement[key]
-#   df["Province_State"] = df["Province_State"].replace(old, new)
-
 ## == Remove 'Recovered' province entry == ##
 entryRemoval = {
   "Recovered": "Recovered",
