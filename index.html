@@ -85,6 +85,15 @@
                     </div>
                     <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
                         <div class="input-group-prepend">
+                            <span class="input-group-text">Y-Axis:</span>
+                        </div>
+                        <select class="form-control yaxis-select" data-chart="countries">
+                            <option value="fixed" selected>Fixed</option>
+                            <option value="highlight">Scale to Highlight</option>
+                        </select>
+                    </div>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+                        <div class="input-group-prepend">
                             <span class="input-group-text">Scale:</span>
                         </div>
                         <label class="btn btn-info active scaleSelection" data-scale="log" data-chart="countries">
@@ -134,6 +143,15 @@
                             <!-- <option value="cases-daily">New Cases /Day</option> -->
                             <option value="deaths">Deaths</option>
                             <option value="recovered">Recovered</option>
+                        </select>
+                    </div>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Y-Axis:</span>
+                        </div>
+                        <select class="form-control yaxis-select" data-chart="states">
+                            <option value="fixed" selected>Fixed</option>
+                            <option value="highlight">Scale to Highlight</option>
                         </select>
                     </div>
                     <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
@@ -216,6 +234,15 @@
                     </div>
                     <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
                         <div class="input-group-prepend">
+                            <span class="input-group-text">Y-Axis:</span>
+                        </div>
+                        <select class="form-control yaxis-select" data-chart="countries-normalized">
+                            <option value="fixed" selected>Fixed</option>
+                            <option value="highlight">Scale to Highlight</option>
+                        </select>
+                    </div>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+                        <div class="input-group-prepend">
                             <span class="input-group-text">Scale:</span>
                         </div>
                         <label class="btn btn-info active scaleSelection" data-scale="log" data-chart="countries-normalized">
@@ -261,24 +288,32 @@
                             <span class="input-group-text">Data:</span>
                         </div>
                         <select class="form-control data-select" data-chart="states-normalized">
-                <option value="active" selected>Active Cases</option>
-                <option value="cases">Confirmed Cases</option>
-                <!-- <option value="cases-daily">New Cases /Day</option> -->
-                <option value="deaths">Deaths</option>
-                <option value="recovered">Recovered</option>
-              </select>
+                            <option value="active" selected>Active Cases</option>
+                            <option value="cases">Confirmed Cases</option>
+                            <!-- <option value="cases-daily">New Cases /Day</option> -->
+                            <option value="deaths">Deaths</option>
+                            <option value="recovered">Recovered</option>
+                        </select>
                     </div>
-
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Y-Axis:</span>
+                        </div>
+                        <select class="form-control yaxis-select" data-chart="states-normalized">
+                            <option value="fixed" selected>Fixed</option>
+                            <option value="highlight">Scale to Highlight</option>
+                        </select>
+                    </div>
                     <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Scale:</span>
                         </div>
                         <label class="btn btn-info active scaleSelection" data-scale="log" data-chart="states-normalized">
-                <input type="radio" name="scale" autocomplete="off" checked> Log Scale
-              </label>
+                            <input type="radio" name="scale" autocomplete="off" checked> Log Scale
+                        </label>
                         <label class="btn btn-info scaleSelection" data-scale="linear" data-chart="states-normalized">
-                <input type="radio" name="scale" autocomplete="off"> Linear Scale
-              </label>
+                            <input type="radio" name="scale" autocomplete="off"> Linear Scale
+                        </label>
                     </div>
                 </div>
             </div>
