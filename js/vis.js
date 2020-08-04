@@ -401,9 +401,6 @@ $(function() {
         if (value == "cases-daily") {
             value = "cases";
             chart.showDelta = true;
-        } else if (value == "deaths-daily") {
-            value = "deaths";
-            chart.showDelta = true;
         } else {
             chart.showDelta = false;
         }
@@ -422,9 +419,6 @@ $(function() {
 // graph tooltip
 var tip_html = function(chart) {
     return function(d, i) {
-        var geometicGrowth = Math.pow(d.cases / chart.y0, 1 / d.dayCounter);
-
-
         var gData = _.find(chart.data, function(e) { return e.country == d.country }).data;
 
         var geoGrowth = [];
@@ -504,10 +498,8 @@ var render = function(chart) {
     var width = cur_width - margin.right - margin.left;
     var height = 500;
 
-    var isSmall = false;
     if (width < 400) {
         height = 300;
-        isSmall = true;
     }
 
     // X-axis scale (days)
@@ -525,7 +517,7 @@ var render = function(chart) {
         scale_y0 = 1;
     }
 
-    scale_yMax = chart.yMax;
+    var scale_yMax = chart.yMax;
     if (chart.yAxisScale == "highlight") {
         scale_yMax = f.maxCases * 1.2;
     }
@@ -659,7 +651,7 @@ var render = function(chart) {
             .attr("d", d3.line()
                 .x(function(d) { return daysScale(d.dayCounter); })
                 .y(function(d) { return casesScale(d.cases); })
-                .defined(function(d, i, a) {
+                .defined(function(d) {
                     return (d.cases >= 1);
                 })
             );
@@ -687,7 +679,7 @@ var render = function(chart) {
             .on('mouseout', tip.hide);
 
         var countryText = svg.append("text")
-            .attr("fill", function (d) { return colorScale(countryData.data[0].country); })
+            .attr("fill", function () { return colorScale(countryData.data[0].country); })
             .attr("class", "label-country")
             .style("opacity", function() {
                 if (countryData.data[0].country == chart.highlight || countryData.data[0].country == "Canada") { return 1; }
