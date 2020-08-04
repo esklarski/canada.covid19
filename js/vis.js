@@ -525,7 +525,7 @@ var render = function(chart) {
     casesScale.domain([scale_y0, scale_yMax]).range([height, 0]);
     
     // Color Scale
-    var colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+    var colorScale = d3.scaleOrdinal(d3.schemePaired);
 
     // SVG
     $("#" + chart.id).html("");
