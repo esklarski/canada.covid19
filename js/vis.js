@@ -525,8 +525,7 @@ var render = function(chart) {
     casesScale.domain([scale_y0, scale_yMax]).range([height, 0]);
     
     // Color Scale
-    var colors = 
-    ["#ff829a", "#009439", "#a500ab", "#74b000", "#a967ff",
+    var colors = ["#ff829a", "#009439", "#a500ab", "#74b000", "#a967ff",
                   "#416b00", "#ff72fb", "#7aba79", "#481c97", "#ff7120",
                   "#0288f9", "#e6001a", "#009c8e", "#ee0060", "#0047ae",
                   "#aa7000", "#aaa1f6", "#a34900", "#333572", "#dd9e5a",
