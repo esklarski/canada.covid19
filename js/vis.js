@@ -630,7 +630,7 @@ var render = function(chart) {
 
     last_index = -1;
     for (var i = 0; i < chart.data.length; i++) {
-        colorScale(i);
+        colorScale(chart.data[i].data[0].country);
         //console.log(chart.data[i]);
         if (chart.data[i].data[0].country == chart.highlight) {
             last_index = i;
@@ -688,7 +688,7 @@ var render = function(chart) {
             .attr("fill", function () { return colorScale(countryData.data[0].country); })
             .attr("class", "label-country")
             .style("opacity", function() {
-                if (countryData.data[0].country == chart.highlight || countryData.data[0].country == "Canada") { return 1; }
+                if (countryData.data[0].country == chart.highlight || countryData.data[0].country == "Canada") { return 0.8; }
                 else { return 0.5; }
             })
             .style("font-size", function() {
