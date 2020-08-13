@@ -1,8 +1,5 @@
-var JHUsource = JHUsource();
+var JHUsource =  "https://raw.githubusercontent.com/esklarski/canada.covid19/master/dataset/merged-data.csv" + "?d=" + _dateUpdated;
 
-function JHUsource() {
-    var temp = _dateUpdated.split('/');
-    return "dataset/merged-data.csv?d=" + temp[0] + temp[1] + temp[2];
-}
+var POPsource = "https://raw.githubusercontent.com/esklarski/canada.covid19/master/dataset/wikipedia-population.csv";
 
-var POPsource = "dataset/wikipedia-population.csv";
+var C19Csource =  "https://raw.githubusercontent.com/esklarski/canada.covid19/master/dataset/c19c-data.csv" + "?d=" + _dateUpdated;
