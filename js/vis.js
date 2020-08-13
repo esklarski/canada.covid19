@@ -1,4 +1,5 @@
-var _rawData = null;
+var _rawJHU = null;
+var _rawC19C = null;
 var _popData = null;
 var dateColumns = [];
 var _client_width = -1;
@@ -7,7 +8,7 @@ var _intial_load = true;
 
 // resize site when width changes
 $(window).resize(function() {
-    if (_rawData != null) {
+    if (_rawJHU != null && _rawC19C != null) {
         var new_width = $("#sizer").width();
         if (_client_width != new_width) {
             render(charts['countries']);
@@ -192,7 +193,11 @@ var prep_data = function(chart) {
 
 
 // ? process data for display ?
-var process_data = function(data, chart) {
+var process_data = function(chart) {
+    if (chart.id == "chart-countries" || chart.id == "chart-countries-normalized")
+         { data = _rawJHU; }
+    else { data = _rawC19C }
+
     var agg = _.reduce(data, chart.reducer, {});
 
     var caseData = [];
@@ -297,7 +302,15 @@ var process_data = function(data, chart) {
 
 
 // file downloads
-var covidData_promise = d3.csv(JHUsource, function(row) {
+var JHUData_promise = d3.csv(JHUsource, function(row) {
+    row["Active"] = +row["Active"];
+    row["Confirmed"] = +row["Confirmed"];
+    row["Recovered"] = +row["Recovered"];
+    row["Deaths"] = +row["Deaths"];
+    return row;
+});
+
+var C19CData_promise = d3.csv(C19Csource, function(row) {
     row["Active"] = +row["Active"];
     row["Confirmed"] = +row["Confirmed"];
     row["Recovered"] = +row["Recovered"];
@@ -319,7 +332,7 @@ var _dataReady = false, _pageReady = false;
 var tryRender = function() {
     if (_dataReady && _pageReady) {
         // try the first chart
-        process_data(_rawData, charts["countries"]);
+        process_data(charts["countries"]);
         render(charts["countries"]);
         // call other charts with timeout
         setTimeout(initialRender2, 100);
@@ -327,13 +340,13 @@ var tryRender = function() {
 }
 
 var initialRender2 = function() {
-    process_data(_rawData, charts["states"]);
+    process_data(charts["states"]);
     render(charts["states"]);
 
-    process_data(_rawData, charts["countries-normalized"]);
+    process_data(charts["countries-normalized"]);
     render(charts["countries-normalized"]);
 
-    process_data(_rawData, charts["states-normalized"]);
+    process_data(charts["states-normalized"]);
     render(charts["states-normalized"]);
 
     _intial_load = false;
@@ -341,12 +354,15 @@ var initialRender2 = function() {
 
 
 // collect promises
-Promise.all([covidData_promise, populationData_promise])
+Promise.all([JHUData_promise, C19CData_promise, populationData_promise])
     .then(function(result) {
-        data = result[0];
-        populationData = result[1];
+        JHUdata = result[0];
+        C19Cdata = result[1];
+        populationData = result[2];
 
-        _rawData = data;
+        _rawJHU = JHUdata;
+
+        _rawC19C = C19Cdata;
 
         _popData = { country: {}, state: {} };
         for (var pop of populationData) {
@@ -407,7 +423,7 @@ $(function() {
 
         chart.dataSelection = value;
         chart.y0 = chart.dataSelection_y0[value];
-        process_data(_rawData, chart);
+        process_data(chart);
         render(chart);
     });
 
