@@ -637,12 +637,17 @@ var render = function(chart) {
         .attr("text-anchor", "end")
         .text(yAxisLabel);
 
+    var dataLabel = "";
+    if (chart.id == "chart-countries" || chart.id == "chart-countries-normalized")
+         { dataLabel = `Data: Johns Hopkins CSSE; Updated: ${_JHUupdated}`; }
+    else { dataLabel = `Data: COVID-19 Canada ODWG; Updated: ${_C19Cupdated}`; }
+
     svg.append("text")
         .attr("x", width)
         .attr("y", height + 32)
         .attr("class", "text-credits")
         .attr("text-anchor", "end")
-        .text(`Data: Johns Hopkins CSSE; Updated: ${_dateUpdated}`);
+        .text(dataLabel);
 
     last_index = -1;
     for (var i = 0; i < chart.data.length; i++) {
