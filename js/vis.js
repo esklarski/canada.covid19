@@ -637,22 +637,21 @@ var render = function(chart) {
         .attr("text-anchor", "end")
         .text(yAxisLabel);
 
-    var dataLabel = "";
-    if (chart.id == "chart-countries" || chart.id == "chart-countries-normalized")
-         { dataLabel = `Data: Johns Hopkins CSSE; Updated: ${_JHUupdated}`; }
-    else { dataLabel = `Data: COVID-19 Canada ODWG; Updated: ${_C19Cupdated}`; }
-
     svg.append("text")
         .attr("x", width)
         .attr("y", height + 32)
         .attr("class", "text-credits")
         .attr("text-anchor", "end")
-        .text(dataLabel);
+        .text(function() {
+            if (chart.id == "chart-countries" || chart.id == "chart-countries-normalized")
+                 { return `Data: Johns Hopkins CSSE; Updated: ${_JHUupdated}`; }
+            else { return `Data: COVID-19 Canada ODWG; Updated: ${_C19Cupdated}`; }
+        });
 
     last_index = -1;
     for (var i = 0; i < chart.data.length; i++) {
         colorScale(chart.data[i].data[0].country);
-        //console.log(chart.data[i]);
+        
         if (chart.data[i].data[0].country == chart.highlight) {
             last_index = i;
         }
