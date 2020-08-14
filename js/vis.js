@@ -1,7 +1,6 @@
 var _rawJHU = null;
 var _rawC19C = null;
 var _popData = null;
-var dateColumns = [];
 var _client_width = -1;
 var _intial_load = true;
 
