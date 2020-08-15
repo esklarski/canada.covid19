@@ -218,7 +218,7 @@ df = df.sort_values(by=['Date', 'Province_State'])
 ########## == write final file == ##########
 print("writing output")
 
-df.to_csv('c19c-data.csv', index=False)
+df.to_csv('odwg-data.csv', index=False)
 
 
 
