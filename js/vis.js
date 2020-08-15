@@ -1,5 +1,5 @@
 var _rawJHU = null;
-var _rawC19C = null;
+var _rawODWG = null;
 var _popData = null;
 var _client_width = -1;
 var _intial_load = true;
@@ -7,7 +7,7 @@ var _intial_load = true;
 
 // resize site when width changes
 $(window).resize(function() {
-    if (_rawJHU != null && _rawC19C != null) {
+    if (_rawJHU != null && _rawODWG != null) {
         var new_width = $("#sizer").width();
         if (_client_width != new_width) {
             render(charts['countries']);
@@ -195,7 +195,7 @@ var prep_data = function(chart) {
 var process_data = function(chart) {
     if (chart.id == "chart-countries" || chart.id == "chart-countries-normalized")
          { data = _rawJHU; }
-    else { data = _rawC19C }
+    else { data = _rawODWG }
 
     var agg = _.reduce(data, chart.reducer, {});
 
@@ -309,7 +309,7 @@ var JHUData_promise = d3.csv(JHUsource, function(row) {
     return row;
 });
 
-var C19CData_promise = d3.csv(C19Csource, function(row) {
+var ODWGData_promise = d3.csv(ODWGsource, function(row) {
     row["Active"] = +row["Active"];
     row["Confirmed"] = +row["Confirmed"];
     row["Recovered"] = +row["Recovered"];
@@ -353,15 +353,15 @@ var initialRender2 = function() {
 
 
 // collect promises
-Promise.all([JHUData_promise, C19CData_promise, populationData_promise])
+Promise.all([JHUData_promise, ODWGData_promise, populationData_promise])
     .then(function(result) {
         JHUdata = result[0];
-        C19Cdata = result[1];
+        ODWGdata = result[1];
         populationData = result[2];
 
         _rawJHU = JHUdata;
 
-        _rawC19C = C19Cdata;
+        _rawODWG = ODWGdata;
 
         _popData = { country: {}, state: {} };
         for (var pop of populationData) {
@@ -644,7 +644,7 @@ var render = function(chart) {
         .text(function() {
             if (chart.id == "chart-countries" || chart.id == "chart-countries-normalized")
                  { return `Data: Johns Hopkins CSSE; Updated: ${_JHUupdated}`; }
-            else { return `Data: COVID-19 Canada ODWG; Updated: ${_C19Cupdated}`; }
+            else { return `Data: COVID-19 Canada ODWG; Updated: ${_ODWGupdated}`; }
         });
 
     last_index = -1;
