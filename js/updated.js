@@ -1,5 +1,5 @@
-var _dateUpdated = "2020/08/15";
-var _timeUpdated = "18:00h";
+var _dateUpdated = "2020/08/16";
+var _timeUpdated = "01:15h";
 var _JHUupdated  = "2020/08/14";
 var _ODWGupdated = "2020/08/15";
 
