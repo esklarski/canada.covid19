@@ -6,8 +6,6 @@
 }
 
 .chart-header {
-  
-  /* border: solid 1px #ccc; */
   border-bottom-width: 0px;
   padding: 0px;
 }
@@ -63,7 +61,6 @@
   font-weight: bold;
   font-family: 'Montserrat', sans-serif;
 }
-
 
 
 
