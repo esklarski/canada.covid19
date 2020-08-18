@@ -195,7 +195,7 @@ var prep_data = function(chart) {
 var process_data = function(chart) {
     if (chart.id == "chart-countries" || chart.id == "chart-countries-normalized")
          { data = _rawJHU; }
-    else { data = _rawODWG }
+    else { data = _rawODWG; }
 
     var agg = _.reduce(data, chart.reducer, {});
 
