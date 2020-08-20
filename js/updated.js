@@ -1,7 +1,7 @@
 var _dateUpdated = "2020/08/19";
-var _timeUpdated = "20:45h";
+var _timeUpdated = "22:45h";
 var _ODWGupdated = "2020/08/19";
-var _JHUupdated  = "2020/08/18";
+var _JHUupdated  = "2020/08/19";
 
 function initPage() {
     // update updated time
