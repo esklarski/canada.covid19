@@ -54,7 +54,7 @@ def translateDate(row):
 
     return row
 
-## add recovered and calc active
+## calc active
 def modData(row):
     row['Active'] = row['Confirmed'] - row['Recovered'] - row['Deaths']
 
