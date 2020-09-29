@@ -10,10 +10,10 @@ $(window).resize(function() {
     if (_rawJHU != null && _rawODWG != null) {
         var new_width = $("#sizer").width();
         if (_client_width != new_width) {
-            render(charts['countries']);
             render(charts['states']);
-            render(charts['countries-normalized']);
+            render(charts['countries']);
             render(charts['states-normalized']);
+            render(charts['countries-normalized']);
         }
     }
 });
@@ -331,16 +331,16 @@ var _dataReady = false, _pageReady = false;
 var tryRender = function() {
     if (_dataReady && _pageReady) {
         // try the first chart
-        process_data(charts["countries"]);
-        render(charts["countries"]);
+        process_data(charts["states"]);
+        render(charts["states"]);
         // call other charts with timeout
         setTimeout(initialRender2, 100);
     }
 }
 
 var initialRender2 = function() {
-    process_data(charts["states"]);
-    render(charts["states"]);
+    process_data(charts["countries"]);
+    render(charts["countries"]);
 
     process_data(charts["countries-normalized"]);
     render(charts["countries-normalized"]);
