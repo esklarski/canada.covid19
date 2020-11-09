@@ -3163,8 +3163,8 @@ Canada,Saskatchewan,3066,2299,742,25,0.82,10-30-2020
 Canada,Yukon,23,17,5,1,4.35,10-30-2020
 Canada,Alberta,27664,22169,5172,323,1.17,10-31-2020
 Canada,British Columbia,14381,11670,2448,263,1.83,10-31-2020
-Canada,Canada,237044,195876,30990,10178,4.29,10-31-2020
-Canada,Manitoba,5722,2646,3009,67,1.17,10-31-2020
+Canada,Canada,237044,195876,30988,10180,4.29,10-31-2020
+Canada,Manitoba,5722,2646,3007,69,1.21,10-31-2020
 Canada,New Brunswick,343,299,38,6,1.75,10-31-2020
 Canada,Newfoundland and Labrador,291,284,3,4,1.37,10-31-2020
 Canada,Northwest Territories,10,8,2,0,0.0,10-31-2020
@@ -3176,8 +3176,8 @@ Canada,Saskatchewan,3144,2380,739,25,0.8,10-31-2020
 Canada,Yukon,23,17,5,1,4.35,10-31-2020
 Canada,Alberta,27664,22169,5172,323,1.17,11-01-2020
 Canada,British Columbia,14381,11670,2448,263,1.83,11-01-2020
-Canada,Canada,239328,197729,31382,10217,4.27,11-01-2020
-Canada,Manitoba,6034,2704,3257,73,1.21,11-01-2020
+Canada,Canada,239328,197729,31380,10219,4.27,11-01-2020
+Canada,Manitoba,6034,2704,3255,75,1.24,11-01-2020
 Canada,New Brunswick,344,303,35,6,1.74,11-01-2020
 Canada,Newfoundland and Labrador,291,284,3,4,1.37,11-01-2020
 Canada,Northwest Territories,10,8,2,0,0.0,11-01-2020
@@ -3189,8 +3189,8 @@ Canada,Saskatchewan,3218,2395,798,25,0.78,11-01-2020
 Canada,Yukon,23,17,5,1,4.35,11-01-2020
 Canada,Alberta,27664,22169,5172,323,1.17,11-02-2020
 Canada,British Columbia,15501,12207,3025,269,1.74,11-02-2020
-Canada,Canada,242926,200052,32623,10251,4.22,11-02-2020
-Canada,Manitoba,6275,2740,3457,78,1.24,11-02-2020
+Canada,Canada,242926,200052,32621,10253,4.22,11-02-2020
+Canada,Manitoba,6275,2740,3455,80,1.27,11-02-2020
 Canada,New Brunswick,344,305,33,6,1.74,11-02-2020
 Canada,Newfoundland and Labrador,291,284,3,4,1.37,11-02-2020
 Canada,Northwest Territories,10,8,2,0,0.0,11-02-2020
@@ -3202,8 +3202,8 @@ Canada,Saskatchewan,3291,2409,857,25,0.76,11-02-2020
 Canada,Yukon,23,17,5,1,4.35,11-02-2020
 Canada,Alberta,29932,23484,6110,338,1.13,11-03-2020
 Canada,British Columbia,15800,12430,3098,272,1.72,11-03-2020
-Canada,Canada,247660,203509,33828,10323,4.17,11-03-2020
-Canada,Manitoba,6377,2797,3497,83,1.3,11-03-2020
+Canada,Canada,247660,203509,33826,10325,4.17,11-03-2020
+Canada,Manitoba,6377,2797,3495,85,1.33,11-03-2020
 Canada,New Brunswick,344,309,29,6,1.74,11-03-2020
 Canada,Newfoundland and Labrador,291,284,3,4,1.37,11-03-2020
 Canada,Northwest Territories,10,9,1,0,0.0,11-03-2020
@@ -3215,8 +3215,8 @@ Canada,Saskatchewan,3371,2506,840,25,0.74,11-03-2020
 Canada,Yukon,23,20,2,1,4.35,11-03-2020
 Canada,Alberta,30447,23874,6230,343,1.13,11-04-2020
 Canada,British Columbia,16135,12659,3203,273,1.69,11-04-2020
-Canada,Canada,250971,206037,34555,10379,4.14,11-04-2020
-Canada,Manitoba,6750,2892,3773,85,1.26,11-04-2020
+Canada,Canada,250971,206037,34553,10381,4.14,11-04-2020
+Canada,Manitoba,6750,2892,3771,87,1.29,11-04-2020
 Canada,New Brunswick,347,313,28,6,1.73,11-04-2020
 Canada,Newfoundland and Labrador,292,285,3,4,1.37,11-04-2020
 Canada,Northwest Territories,10,9,1,0,0.0,11-04-2020
@@ -3226,10 +3226,10 @@ Canada,Prince Edward Island,64,64,0,0,0.0,11-04-2020
 Canada,Quebec,109918,94101,9467,6350,5.78,11-04-2020
 Canada,Saskatchewan,3407,2584,798,25,0.73,11-04-2020
 Canada,Yukon,23,20,2,1,4.35,11-04-2020
-Canada,Alberta,31249,23874,7032,343,1.1,11-05-2020
+Canada,Alberta,30447,23874,6230,343,1.13,11-05-2020
 Canada,British Columbia,16560,12806,3481,273,1.65,11-05-2020
-Canada,Canada,254894,207998,36466,10430,4.09,11-05-2020
-Canada,Manitoba,7176,2920,4167,89,1.24,11-05-2020
+Canada,Canada,254092,207998,35662,10432,4.11,11-05-2020
+Canada,Manitoba,7176,2920,4165,91,1.27,11-05-2020
 Canada,New Brunswick,349,315,28,6,1.72,11-05-2020
 Canada,Newfoundland and Labrador,294,285,5,4,1.36,11-05-2020
 Canada,Northwest Territories,10,10,0,0,0.0,11-05-2020
@@ -3239,10 +3239,10 @@ Canada,Prince Edward Island,64,64,0,0,0.0,11-05-2020
 Canada,Quebec,111056,94884,9794,6378,5.74,11-05-2020
 Canada,Saskatchewan,3536,2634,877,25,0.71,11-05-2020
 Canada,Yukon,23,20,2,1,4.35,11-05-2020
-Canada,Alberta,31858,23874,7633,351,1.1,11-06-2020
+Canada,Alberta,31858,24684,6822,352,1.1,11-06-2020
 Canada,British Columbia,17149,13035,3839,275,1.6,11-06-2020
-Canada,Canada,258639,210427,37730,10482,4.05,11-06-2020
-Canada,Manitoba,7419,3037,4288,94,1.27,11-06-2020
+Canada,Canada,258637,211237,36916,10484,4.05,11-06-2020
+Canada,Manitoba,7418,3037,4285,96,1.29,11-06-2020
 Canada,New Brunswick,350,320,24,6,1.71,11-06-2020
 Canada,Newfoundland and Labrador,294,285,5,4,1.36,11-06-2020
 Canada,Northwest Territories,10,10,0,0,0.0,11-06-2020
@@ -3250,6 +3250,34 @@ Canada,Nova Scotia,1121,1040,16,65,5.8,11-06-2020
 Canada,Nunavut,1,0,1,0,0.0,11-06-2020
 Canada,Ontario,84523,70086,11179,3258,3.85,11-06-2020
 Canada,Prince Edward Island,66,64,2,0,0.0,11-06-2020
-Canada,Quebec,112189,95956,9830,6403,5.71,11-06-2020
-Canada,Saskatchewan,3623,2687,911,25,0.69,11-06-2020
+Canada,Quebec,112189,95956,9831,6402,5.71,11-06-2020
+Canada,Saskatchewan,3622,2687,910,25,0.69,11-06-2020
 Canada,Yukon,23,20,2,1,4.35,11-06-2020
+Canada,Alberta,32777,24684,7736,357,1.09,11-07-2020
+Canada,British Columbia,17716,13035,4405,276,1.56,11-07-2020
+Canada,Canada,262962,213094,39330,10538,4.01,11-07-2020
+Canada,Manitoba,7689,3126,4460,103,1.34,11-07-2020
+Canada,New Brunswick,353,321,26,6,1.7,11-07-2020
+Canada,Newfoundland and Labrador,296,286,6,4,1.35,11-07-2020
+Canada,Northwest Territories,10,10,0,0,0.0,11-07-2020
+Canada,Nova Scotia,1125,1040,20,65,5.78,11-07-2020
+Canada,Nunavut,1,0,1,0,0.0,11-07-2020
+Canada,Ontario,85732,70938,11526,3268,3.81,11-07-2020
+Canada,Prince Edward Island,66,64,2,0,0.0,11-07-2020
+Canada,Quebec,113423,96831,10161,6431,5.67,11-07-2020
+Canada,Saskatchewan,3738,2726,985,27,0.72,11-07-2020
+Canada,Yukon,23,20,2,1,4.35,11-07-2020
+Canada,Alberta,33504,24684,8457,363,1.08,11-08-2020
+Canada,British Columbia,17716,13035,4405,276,1.56,11-08-2020
+Canada,Canada,266842,215005,41274,10563,3.96,11-08-2020
+Canada,Manitoba,8130,3175,4849,106,1.3,11-08-2020
+Canada,New Brunswick,354,324,24,6,1.69,11-08-2020
+Canada,Newfoundland and Labrador,297,286,7,4,1.35,11-08-2020
+Canada,Northwest Territories,10,10,0,0,0.0,11-08-2020
+Canada,Nova Scotia,1128,1043,20,65,5.76,11-08-2020
+Canada,Nunavut,2,0,2,0,0.0,11-08-2020
+Canada,Ontario,86882,71815,11793,3274,3.77,11-08-2020
+Canada,Prince Edward Island,66,64,2,0,0.0,11-08-2020
+Canada,Quebec,114820,97789,10591,6440,5.61,11-08-2020
+Canada,Saskatchewan,3897,2747,1122,28,0.72,11-08-2020
+Canada,Yukon,23,20,2,1,4.35,11-08-2020
