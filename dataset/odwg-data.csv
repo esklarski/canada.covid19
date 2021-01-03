@@ -1,32 +1,4 @@
 Country_Region,Province_State,Confirmed,Recovered,Active,Deaths,Mortality,Date
-Canada,Alberta,102928,84827,17055,1046,1.02,01-01-2021
-Canada,British Columbia,51990,42129,8960,901,1.73,01-01-2021
-Canada,Canada,587665,492279,79707,15679,2.67,01-01-2021
-Canada,Manitoba,24699,19528,4504,667,2.7,01-01-2021
-Canada,New Brunswick,601,567,25,9,1.5,01-01-2021
-Canada,Newfoundland and Labrador,390,366,20,4,1.03,01-01-2021
-Canada,Northwest Territories,24,24,0,0,0.0,01-01-2021
-Canada,Nova Scotia,1497,1399,33,65,4.34,01-01-2021
-Canada,Nunavut,266,262,2,2,0.75,01-01-2021
-Canada,Ontario,187100,158472,24025,4603,2.46,01-01-2021
-Canada,Prince Edward Island,96,90,6,0,0.0,01-01-2021
-Canada,Quebec,202641,172047,22368,8226,4.06,01-01-2021
-Canada,Saskatchewan,15360,12496,2709,155,1.01,01-01-2021
-Canada,Yukon,60,59,0,1,1.67,01-01-2021
-Canada,Alberta,103828,84827,17955,1046,1.01,01-02-2021
-Canada,British Columbia,51990,42129,8960,901,1.73,01-02-2021
-Canada,Canada,592908,495083,82097,15728,2.65,01-02-2021
-Canada,Manitoba,25026,19789,4559,678,2.71,01-02-2021
-Canada,New Brunswick,611,567,35,9,1.47,01-02-2021
-Canada,Newfoundland and Labrador,390,372,14,4,1.03,01-02-2021
-Canada,Northwest Territories,24,24,0,0,0.0,01-02-2021
-Canada,Nova Scotia,1499,1403,31,65,4.34,01-02-2021
-Canada,Nunavut,266,262,2,2,0.75,01-02-2021
-Canada,Ontario,190619,160526,25455,4638,2.43,01-02-2021
-Canada,Prince Edward Island,96,90,6,0,0.0,01-02-2021
-Canada,Quebec,202641,172047,22368,8226,4.06,01-02-2021
-Canada,Saskatchewan,15845,12975,2712,158,1.0,01-02-2021
-Canada,Yukon,60,59,0,1,1.67,01-02-2021
 Canada,Canada,1,0,1,0,0.0,01-25-2020
 Canada,Ontario,1,0,1,0,0.0,01-25-2020
 Canada,Canada,1,0,1,0,0.0,01-26-2020
@@ -4051,3 +4023,31 @@ Canada,Prince Edward Island,96,90,6,0,0.0,12-31-2020
 Canada,Quebec,202641,172047,22368,8226,4.06,12-31-2020
 Canada,Saskatchewan,15360,12496,2709,155,1.01,12-31-2020
 Canada,Yukon,60,59,0,1,1.67,12-31-2020
+Canada,Alberta,102928,84827,17055,1046,1.02,01-01-2021
+Canada,British Columbia,51990,42129,8960,901,1.73,01-01-2021
+Canada,Canada,587665,492279,79707,15679,2.67,01-01-2021
+Canada,Manitoba,24699,19528,4504,667,2.7,01-01-2021
+Canada,New Brunswick,601,567,25,9,1.5,01-01-2021
+Canada,Newfoundland and Labrador,390,366,20,4,1.03,01-01-2021
+Canada,Northwest Territories,24,24,0,0,0.0,01-01-2021
+Canada,Nova Scotia,1497,1399,33,65,4.34,01-01-2021
+Canada,Nunavut,266,262,2,2,0.75,01-01-2021
+Canada,Ontario,187100,158472,24025,4603,2.46,01-01-2021
+Canada,Prince Edward Island,96,90,6,0,0.0,01-01-2021
+Canada,Quebec,202641,172047,22368,8226,4.06,01-01-2021
+Canada,Saskatchewan,15360,12496,2709,155,1.01,01-01-2021
+Canada,Yukon,60,59,0,1,1.67,01-01-2021
+Canada,Alberta,103828,84827,17955,1046,1.01,01-02-2021
+Canada,British Columbia,51990,42129,8960,901,1.73,01-02-2021
+Canada,Canada,592908,495083,82097,15728,2.65,01-02-2021
+Canada,Manitoba,25026,19789,4559,678,2.71,01-02-2021
+Canada,New Brunswick,611,567,35,9,1.47,01-02-2021
+Canada,Newfoundland and Labrador,390,372,14,4,1.03,01-02-2021
+Canada,Northwest Territories,24,24,0,0,0.0,01-02-2021
+Canada,Nova Scotia,1499,1403,31,65,4.34,01-02-2021
+Canada,Nunavut,266,262,2,2,0.75,01-02-2021
+Canada,Ontario,190619,160526,25455,4638,2.43,01-02-2021
+Canada,Prince Edward Island,96,90,6,0,0.0,01-02-2021
+Canada,Quebec,202641,172047,22368,8226,4.06,01-02-2021
+Canada,Saskatchewan,15845,12975,2712,158,1.0,01-02-2021
+Canada,Yukon,60,59,0,1,1.67,01-02-2021
