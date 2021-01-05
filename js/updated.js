@@ -1,7 +1,7 @@
-var _dateUpdated = "2021/01/03";
-var _timeUpdated = "23:55h";
-var _ODWGupdated = "2021/01/03";
-var _JHUupdated  = "2021/01/03";
+var _dateUpdated = "2021/01/05";
+var _timeUpdated = "00:05h";
+var _ODWGupdated = "2021/01/04";
+var _JHUupdated  = "2021/01/04";
 
 function initPage() {
     // update updated time
