@@ -47,18 +47,14 @@ def translateProv(row):
 
     return row
 
-## translate date
-def translateDate(row):
-    temp = str(row["date"]).strip().split("-")
-    row["date"] = temp[1] + "-" + temp[0] + "-" + temp[2]
-
-    return row
-
 ## calc active
 def modData(row):
     row['Active'] = row['Confirmed'] - row['Recovered'] - row['Deaths']
 
     return row
+
+## date reading format
+dateformatter = lambda x: pd.datetime.strptime(x, '%d-%m-%Y')
 
 
 
@@ -71,9 +67,9 @@ df = df.astype({"Confirmed": "int32", "Recovered": "int32", "Active": "int32", "
 ########## == read in province data files == ##########
 print("parsing prov/territory data")
 
-cf = pd.read_csv(cases_file)
-rf = pd.read_csv(recoveries_file)
-mf = pd.read_csv(mortality_file)
+cf = pd.read_csv(cases_file, parse_dates=['date_report'], date_parser=dateformatter)
+rf = pd.read_csv(recoveries_file, parse_dates=['date_recovered'], date_parser=dateformatter)
+mf = pd.read_csv(mortality_file, parse_dates=['date_death_report'], date_parser=dateformatter)
 
 ## rename date column
 rf = rf.rename( columns = {'date_recovered':'date'} )
@@ -89,14 +85,9 @@ cf['cumulative_cases']     = cf['cumulative_cases'].round(decimals=0).astype(int
 rf['cumulative_recovered'] = rf['cumulative_recovered'].round(decimals=0).astype(int)
 mf['cumulative_deaths']    = mf['cumulative_deaths'].round(decimals=0).astype(int)
 
-## apply date and name transforms
-cf = cf.apply( translateDate, axis=1 )
+## apply name transform
 cf = cf.apply( translateProv, axis=1 )
-
-rf = rf.apply( translateDate, axis=1 )
 rf = rf.apply( translateProv, axis=1 )
-
-mf = mf.apply( translateDate, axis=1 )
 mf = mf.apply( translateProv, axis=1 )
 
 
@@ -147,9 +138,9 @@ for row in cf.iterrows():
 ########## == read in Canada data files == ##########
 print("parsing canada data")
 
-CanC = pd.read_csv(canada_cases)
-CanR = pd.read_csv(canada_recoveries)
-CanM = pd.read_csv(canada_mortality)
+CanC = pd.read_csv(canada_cases, parse_dates=['date_report'], date_parser=dateformatter)
+CanR = pd.read_csv(canada_recoveries, parse_dates=['date_recovered'], date_parser=dateformatter)
+CanM = pd.read_csv(canada_mortality, parse_dates=['date_death_report'], date_parser=dateformatter)
 
 ## rename date columns
 CanC = CanC.rename( columns = {'date_report':'date'} )
@@ -164,11 +155,6 @@ CanM['cumulative_deaths']    = CanM['cumulative_deaths'].fillna(0)
 CanC['cumulative_cases']     = CanC['cumulative_cases'].round(decimals=0).astype(int)
 CanR['cumulative_recovered'] = CanR['cumulative_recovered'].round(decimals=0).astype(int)
 CanM['cumulative_deaths']    = CanM['cumulative_deaths'].round(decimals=0).astype(int)
-
-## apply date transform
-CanC = CanC.apply( translateDate, axis=1 )
-CanR = CanR.apply( translateDate, axis=1 )
-CanM = CanM.apply( translateDate, axis=1 )
 
 ## populate DataFrame
 for row in CanC.iterrows():
@@ -211,7 +197,11 @@ df['Mortality'] = df['Mortality'].round(decimals=2).astype(float)
 ########## == sort rows by date, province == ##########
 print("sorting...")
 
+## == sort before formatting date == ##
 df = df.sort_values(by=['Date', 'Province_State'])
+
+## == format date row == ##
+df['Date'] = df['Date'].dt.strftime('%m-%d-%Y')
 
 
 
