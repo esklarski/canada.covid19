@@ -80,7 +80,7 @@ def processDate(date):
     df = df[ ["Country_Region", "Province_State", "Confirmed", "Recovered", "Active", "Deaths"] ]
 
     # set date of current data
-    df["Date"] = date
+    df["Date"] = pd.datetime.strptime(date, '%m-%d-%Y')
 
     return df
 
@@ -158,6 +158,10 @@ print("calculating mortality rate")
 df.insert(6, 'Mortality', '')
 df['Mortality'] = ( df['Deaths'] / df['Confirmed'] ) * 100
 df['Mortality'] = df['Mortality'].round(decimals=2).astype(float)
+
+## == Sort and format dates == ##
+df = df.sort_values(by=['Date', 'Country_Region'])
+df['Date'] = df['Date'].dt.strftime('%m-%d-%Y')
 
 ## == write final file == ##
 print("writing file")
