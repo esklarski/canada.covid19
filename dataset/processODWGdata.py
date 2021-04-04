@@ -35,6 +35,7 @@ for el in stateTranslation:
 import pandas as pd
 import os
 import time
+from datetime import datetime
 
 ## start time
 startTime = time.time()
@@ -54,7 +55,7 @@ def modData(row):
     return row
 
 ## date reading format
-dateformatter = lambda x: pd.datetime.strptime(x, '%d-%m-%Y')
+dateformatter = lambda x: datetime.strptime(x, '%d-%m-%Y')
 
 
 

@@ -80,7 +80,7 @@ def processDate(date):
     df = df[ ["Country_Region", "Province_State", "Confirmed", "Recovered", "Active", "Deaths"] ]
 
     # set date of current data
-    df["Date"] = pd.datetime.strptime(date, '%m-%d-%Y')
+    df["Date"] = datetime.strptime(date, '%m-%d-%Y')
 
     return df
 
@@ -89,6 +89,7 @@ def processDate(date):
 import pandas as pd
 import os
 import time
+from datetime import datetime
 
 # start time
 startTime = time.time()
