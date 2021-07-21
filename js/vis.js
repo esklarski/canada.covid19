@@ -185,7 +185,7 @@ var prep_data = function(chart) {
     chart.data = caseData;
   
     casesMax = _.sortBy(chart.data, function(d) { return -d.maxCases; } )[0];
-    chart.yMax = findNextExp(casesMax.maxCases);
+        chart.yMax = findNextExp(casesMax.maxCases);
   
     return chart;
 };
@@ -720,7 +720,8 @@ var render = function(chart) {
             countryText
                 .attr("x", 5 + daysScale(countryData.maxDay))
                 .attr("y", casesScale(countryData.lastDayCases))
-                .attr("alignment-baseline", "middle")
+                // .attr("alignment-baseline", "middle")
+                .attr("text-anchor", "end")
         } else {
             countryText
                 .attr("x", daysScale(maxDayRendered) - 5)
