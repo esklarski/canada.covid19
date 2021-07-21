@@ -293,7 +293,9 @@ var process_data = function(chart) {
     chart.fullData = caseData;
     
     chart.xMax = maxDayCounter;
-    if (chart.xMax > 55) { chart.xMax = 55; }
+    if (chart.id == "chart-countries" || chart.id == "chart-countries-normalized") {
+        if (chart.xMax > 55) { chart.xMax = 55; }
+    }
 
     prep_data(chart);
 
