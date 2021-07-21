@@ -185,8 +185,9 @@ var prep_data = function(chart) {
     chart.data = caseData;
   
     casesMax = _.sortBy(chart.data, function(d) { return -d.maxCases; } )[0];
-        chart.yMax = findNextExp(casesMax.maxCases);
-  
+
+    chart.yMax = casesMax.maxCases + 1;
+
     return chart;
 };
 
@@ -502,7 +503,7 @@ var render = function(chart) {
 
     var maxDayRendered = chart.xMax;
     if (f && f.maxDay > maxDayRendered) {
-        maxDayRendered = f.maxDay + 3;
+        maxDayRendered = f.maxDay + 1;
     }
 
     var margin = { top: 10, right: 20, bottom: 40, left: 60 };
@@ -534,7 +535,7 @@ var render = function(chart) {
 
     var scale_yMax = chart.yMax;
     if (chart.yAxisScale == "highlight") {
-        scale_yMax = f.maxCases * 1.2;
+        scale_yMax = f.maxCases + 1;
     }
 
     casesScale.domain([scale_y0, scale_yMax]).range([height, 0]);
