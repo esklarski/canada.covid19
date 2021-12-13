@@ -24,6 +24,25 @@ stateDict = {}
 for el in stateTranslation:
     stateDict[ el[1] ] = el[0]
 
+months = [
+    ['January', '01'],
+    ['February', '02'],
+    ['March', '03'],
+    ['April', '04'],
+    ['May', '05'],
+    ['June', '06'],
+    ['July', '07'],
+    ['August', '08'],
+    ['September', '09'],
+    ['October', '10'],
+    ['November', '11'],
+    ['December', '12']
+]
+
+monthDict = {}
+
+for month in months:
+    monthDict[ month[1] ] = month[0]
 
 ## == translate inconsistent provine_state names == ##
 def translateState(row):
@@ -39,9 +58,14 @@ def translateState(row):
     return row
 
 
+currentMonth = ''
 ## == process file == ##
 def processDate(date):
-    print(date)
+    global currentMonth
+
+    if currentMonth != date[0:2]:
+        currentMonth = date[0:2]
+        print("Processing: " + monthDict[ currentMonth ])
 
     # read file
     df = pd.read_csv(path_JHUdata + date + ".csv")
@@ -100,6 +124,8 @@ df = pd.DataFrame()
 # pull in files and sort
 files = os.listdir(path_JHUdata)
 files.sort()
+
+print("Processing JHU data")
 
 for filename in files:
     # only take .csv files
